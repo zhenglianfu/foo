@@ -1,0 +1,129 @@
+/**
+CSS RESET
+**/
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,form,fieldset,input,textarea,select,p,blockquote,th,td,button
+	{
+	padding: 0;
+	margin: 0;
+}
+
+input,button,select,textarea {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: inherit;
+	outline: none;
+}
+
+button,select {
+	text-transform: none;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+fieldset,img {
+	border: 0;
+}
+
+address,caption,cite,code,dfn,em,strong,th,var,button {
+	font-weight: normal;
+	font-style: normal;
+}
+
+ol,ul {
+	list-style: none;
+}
+
+caption,th {
+	text-align: left;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-weight: normal;
+	font-size: 100%;
+}
+
+q:before,q:after {
+	content: '';
+}
+
+abbr,acronym,button {
+	border: 0;
+}
+
+*,*:before,*:after {
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+/*CSS RESET END*/
+body {
+	color: #333;
+	font: 14px/16px "yahei";
+}
+
+/**FORM SET**/
+input,select{
+	width : 150px;
+	line-height : 16px;
+	font-size : 14px;
+}
+
+/*hide*/
+.hide{
+	display : none;	
+}
+
+/*start of block*/
+.block1,.block2,.block3,.block4 {
+	background: #fff;
+	border: none 0;
+	padding: 5px;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.block1 {
+	width: 400px;
+	height: 400px;
+}
+
+.block2 {
+	width: 300px;
+	height: 300px;
+}
+
+.block3 {
+	width: 200px;
+	height: 200px;
+}
+
+.block4 {
+	width: 100px;
+	height: 100px;
+}
+
+.clear-fix:after,.clear:before, .box:before, .box:after {
+	overflow: hidden;
+	content: "";
+	clear: both;
+	display: block;
+}
+
+.clear-fix {
+	clear: both;
+}
+.box{
+	clear : both;
+	padding : 10px;
+	border : 1px solid #ccc;
+	margin : 0 10px 10px 0;
+	position : relative;
+}
+.box .title{
+	display : block;
+	font : bold 18px/20px "yahei";;
+	text-align : center;
+	margin-bottom : 5px;
+}

@@ -1,0 +1,164 @@
+/**BUTTON**/
+/* metro button
+.btn{
+	-moz-user-select : none;
+	user-select : none;
+	background : #fff;
+	border : 1px solid;
+	border-radius : 4px;
+	cursor : pointer;
+	display : inline-block;
+	font-size : 14px;
+	font-weight : normal;
+	line-height: 1.42857;
+    margin-bottom: 0;
+    padding: 6px 12px;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+*/
+/*real button*/
+.btn {
+	-moz-user-select: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	border-color: #e6e6e6 #e6e6e6 #bfbfbf;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	border-bottom-color: #b3b3b3;
+	box-shadow: 1px 1px 1px #eee;
+	cursor: pointer;
+	color: #333;
+	display: inline-block;
+	font-size: 14px;
+	font-weight: bold;
+	line-height: 18px;
+	margin-bottom: 0;
+	padding: 6px 12px;
+	text-align: center;
+	vertical-align: middle;
+	white-space: nowrap;
+	background-image: -moz-linear-gradient(top, #fff, #e6e6e6);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#fff),
+		to(#e6e6e6));
+	background-image: -webkit-linear-gradient(top, #fff, #e6e6e6);
+	background-image: -o-linear-gradient(top, #ffffff, #e6e6e6);
+	background-image: linear-gradient(to bottom, #fff, #e6e6e6);
+	background-image: -moz-linear-gradient(top, #fff, #e6e6e6);
+}
+
+.btn:disabled {
+	cursor: default;
+	background-image: none;
+	box-shadow: 0 0;
+	color: #aaa;
+	border-color: rgba(0, 0, 0, 0.1);
+	background: none repeat scroll 0 0 rgba(230, 230, 230, 0.5);
+}
+
+.btn:not(:disabled ):active {
+	color: #666;
+	background-image: -moz-linear-gradient(top, #ddd, #e6e6e6);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#ddd),
+		to(#e6e6e6));
+	background-image: -webkit-linear-gradient(top, #ddd, #e6e6e6);
+	background-image: -o-linear-gradient(top, #ddd, #e6e6e6);
+	background-image: linear-gradient(to bottom, #ddd, #e6e6e6);
+	box-shadow: 0 0 #fff;
+	border-color: rgba(0, 0, 0, 0.1);
+}
+
+.btn-green {
+	background : #3f3;
+	background-image : #3f3;
+	background-image: -moz-linear-gradient(top, #9f9, #3f3);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#9f9),
+		to(#3f3));
+	background-image: -webkit-linear-gradient(top, #9f9, #3f3);
+	background-image: -o-linear-gradient(top, #9f9, #3f3);
+	background-image: linear-gradient(to bottom, #9f9, #3f3);
+	color: #444;
+}
+
+.btn-green:disabled {
+	background: none repeat scroll 0 0 rgba(40, 250, 40, 0.5);
+    color: #999999;
+}
+
+.btn.btn-green:not(:disabled ):active {
+	background-image: -moz-linear-gradient(top, #0e0, #3f3);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#0e0),
+		to(#3f3));
+	background-image: -webkit-linear-gradient(top, #0e0, #3f3);
+	background-image: -o-linear-gradient(top, #0e0, #3f3);
+	background-image: linear-gradient(to bottom, #0e0, #3f3);
+}
+
+.btn-red {
+	background : #f22;
+	background-image: -moz-linear-gradient(top, #f77, #f22);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f77),
+		to(#f22));
+	background-image: -webkit-linear-gradient(top, #f77, #f22);
+	background-image: -o-linear-gradient(top, #f77, #f22);
+	background-image: linear-gradient(to bottom, #f77, #f22);
+}
+
+.btn-red:disabled {
+	background: none repeat scroll 0 0 rgba(240, 80, 80, 0.5);
+    color: #999;
+}
+
+.btn.btn-red:not(:disabled ):active {
+	background-image: -moz-linear-gradient(top, #e11, #f22);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#e11),
+		to(#f22));
+	background-image: -webkit-linear-gradient(top, #e11, #f22);
+	background-image: -o-linear-gradient(top, #e11, #f22);
+	background-image: linear-gradient(to bottom, #e11, #f22);
+	color: #333;
+}
+
+.btn-blue {
+	background : #33f;
+	background-image: -moz-linear-gradient(top, #88f, #33f);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#88f),
+		to(#33f));
+	background-image: -webkit-linear-gradient(top, #88f, #33f);
+	background-image: -o-linear-gradient(top, #88f, #33f);
+	background-image: linear-gradient(to bottom, #88f, #33f);
+	color: #000;
+}
+
+.btn-blue:disabled{
+	background: none repeat scroll 0 0 rgba(60, 60, 255, 0.5);
+	color : #888;
+}
+
+.btn.btn-blue:not(:disabled ):active {
+	background-image: -moz-linear-gradient(top, #00e, #55f);
+	background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#00e),
+		to(#55f));
+	background-image: -webkit-linear-gradient(top, #00e, #55f);
+	background-image: -o-linear-gradient(top, #00e, #55f);
+	background-image: linear-gradient(to bottom, #00e, #55f);
+	color: #000;
+}
+
+.btn-circle {
+	border-radius: 20px;
+}
+
+.btn-right-angle {
+	border-radius: 0;
+}
+
+.btn-grp {
+	display: block;
+}
+
+.btn-grp .btn {
+	margin: 0 10px 10px 0;
+}

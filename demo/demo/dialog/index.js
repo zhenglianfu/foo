@@ -1,0 +1,9 @@
+(function(){
+	$("#dialog").dialog({width:400,height:300,title:"hello",autoOpen:false});
+	$("#open").click(function(){
+		$("#dialog").dialog("open");
+	});
+	$("#close").click(function(){
+		$("#dialog").dialog("close");
+	});
+})($);

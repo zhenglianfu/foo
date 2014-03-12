@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>排序算法一览</title>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="../../myLib/comm/comm.css" />
+<link rel="stylesheet" type="text/css"
+	href="../../myLib/button/button.css" />
+<style type="text/css">
+body {
+	padding: 10px;
+}
+.sort-box{
+	box-shadow : 0 0 1px #bbb inset;
+}
+.sort-box>div {
+	height: 270px;
+	border: 1px solid #2759da;
+	position: relative;
+	box-shadow: 0 0 2px #1c76c9;
+	padding-top : 18px;
+}
+
+.sort-box>div>ul {
+	height : 100%;
+	width : 100%;
+}
+.sort-box .sort-atom{
+	text-align : center;	
+	display : block;
+	background : rgba(0,90,255,0.7);
+	float : left;
+	position : relative;
+	border : 1px solid #ccc;
+	border-width : 1px 1px 0;
+}
+.btn-grp {
+	text-align: center;
+	width: 100%;
+}
+.hide{
+	display : none;
+}
+.sort-atom.focused{
+	background : rgba(255,150,0,0.7);
+}
+.sort-atom.target{
+	background : rgba(255,30,50,0.7);
+}
+.sort-atom>span{
+	width : 100%;
+	font : 10px/18px 'yahei';
+	text-align : center;
+	display : inline-block;
+	position : relative;
+	top : -18px;
+}
+</style>
+</head>
+<body>
+	<div class="box">
+		<h6 class="title">排序算法分布</h6>
+		<div class="sort-box box">
+			<h6 class="title">冒泡排序</h6>
+			<div id="popSort">
+				<ul class="cler-fix"></ul>
+			</div>
+		</div>
+		<div class="sort-box box hide">
+			<h6 class="title">快速排序</h6>
+			<div id="quickSort">
+				<ul class="cler-fix"></ul>
+			</div>
+		</div>
+		<div class="sort-box box hide">
+			<h6 class="title">选择排序</h6>
+			<div id="selectSort">
+				<ul class="cler-fix"></ul>
+			</div>
+		</div>
+		<div class="sort-box box hide">
+			<h6 class="title">希尔排序</h6>
+			<div id="shellSort">
+				<ul class="cler-fix"></ul>
+			</div>
+		</div>
+		<div class="sort-box box hide">
+			<h6 class="title">插入排序</h6>
+			<div id="insertSort">
+				<ul class="cler-fix"></ul>
+			</div>
+		</div>
+		<div class="sort-box box hide">
+			<h6 class="title">堆排序</h6>
+			<div id="heapSort">
+				<ul class="cler-fix"></ul>
+			</div>
+		</div>
+		<div class="box">
+			<label class="lb">排序大小</label> 
+			<select id="seed">
+				<option value="25">25</option>
+				<option value="40">40</option>
+				<option value="50">50</option>
+				<option value="80">80</option>
+			</select>
+			<label class="lb">排序方法</label> 
+			<select id="divId">
+				<option value="bubble">冒泡排序</option>
+				<option value="select">选择排序</option>
+				<option value="quick">快速排序</option>
+				<option value="shell">希尔排序</option>
+				<option value="insert">插入排序</option>
+				<option value="heap">堆排序</option>
+			</select>
+			<label class="lb">初始状态</label> 
+			<select id="status">
+				<option value="true">无序</option>
+				<option value="false">部分有序</option>
+			</select>
+			<label class="lb">演示速度</label> 
+			<select id="speed">
+				<option value="50">快</option>
+				<option value="250">中</option>
+				<option value="500">慢</option>
+			</select>
+		</div>
+		<div class="btn-grp">
+			<button class="btn btn-right-angle" id="ready">准备</button>
+			<button class="btn btn-red btn-right-angle" id="stop" disabled>暂停</button>
+			<button class="btn btn-blue btn-right-angle" id="reset">重置</button>
+		</div>
+	</div>
+</body>
+<script type="text/javascript" src="../../lib/jquery/1.9.1/jquery.js"></script>
+<script type="text/javascript" src="../../myLib/button/button.js"></script>
+<script type="text/javascript" src="./sort.js"></script>
+</html>
