@@ -1,0 +1,145 @@
+@CHARSET="UTF-8";
+/*index page css set*/
+.head{
+	margin-bottom :10px;
+}
+.music-fm{
+	padding-top : 20px;
+}
+.fm-wrap{
+	clear : both;
+}
+.fm-wrap:after, .fm-wrap:before{
+	clear : both;
+	content : "";
+	display : block;
+	overflow : hidden;
+}
+.fm-wrap > div{
+	float : left;
+}
+.fm-pic{
+	padding: 0 10px 0 0;
+}
+.fm-pic .img{
+	animation-play-state : paused;
+	border : 1px solid rbga(0,0,0,0);
+	border-radius : 50px;
+	width : 100px;
+	height : 100px;
+}
+.fm-wrap .fm-panel{
+	padding : 0 10px;
+	width : 315px;
+}
+.clear, .clear:after, .clear:before{
+	clear : both;
+	content : "";
+	visible : disabled;
+	overlow : hidden;
+	heiht : 0;
+	width : 0;
+}
+.fm-panel .play-panel {
+	position : relative;
+}
+.fm-panel .play-panel .s-name{
+	font-family: 'Microsoft Yahei','微软雅黑',SimHei,STHeiti,'宋体',宋体,Tahoma,Arial,Helvetica;
+    font-size: 20px;
+    line-height: 27px;
+}
+.fm-panel .play-panel .s-author{
+ font-size: 14px;
+    margin-left: 10px;
+}
+.fm-panel a, .fm-panel a:link,.fm-panel a:visited{
+	color : #000;
+} 
+.fm-panel a:hover{
+	color : blue;
+}
+.fm-panel .process-bar{
+	width : 229px;
+	height: 4px;
+	background : #cecece;
+	float : left;
+	position : relative;
+	overflow : hidden;
+	margin-top : 13px;
+	margin-right : 5px;
+}
+.fm-panel .time{
+	display : block;
+	font-size : 12px;
+	margin-top : 6px;
+	color : #666;
+}
+.process-bar .processing{
+	background : #3792ef;
+	width: 0;
+	position : absolute;
+	top : 0;
+	left : 0;
+	height : 4px;
+}
+.music-fm .volume-ctrl {
+	padding : 10px;
+	height :16px;
+	width : 18px;
+	position : absolute;	
+	left : 268px;
+	top : 23px;
+}
+.music-fm .volume-ctrl .volume-open{
+	background : url(./images/music-ctrl.png)  0px -182px;  
+	display : block;
+	float : left;
+	width : 18px;
+	height : 15px;
+}
+.volume-ctrl .volume-panel{
+	display : none;
+	width : 3px;
+	border-width : 6px 10px 20px;
+	border-color : #e0e0e0;
+	border-style : solid;
+	position : absolute;
+	bottom:9px;
+	height : 52px;
+	background : #bbb;
+	right : 8px;
+}
+.volume-panel .mute{
+	display : block;
+	height : 15px;
+	width : 18px;
+	background : url(./images/music-ctrl.png)  0px -182px;  
+	position: absolute;
+	bottom : -18px;
+	left : -7px;
+}
+.volume-ctrl.volume-muted .mute, .volume-ctrl.volume-muted .volume-open{
+	background-position : -28px -182px;
+}
+.volume-ctrl .volume-open:hover{
+	background-position : -90px -182px;
+}
+.volume-ctrl.volume-muted .volume-open:hover{
+	background-position : -60px -182px;
+}
+.volume-panel .slider{
+	width : 3px;
+	background : #3792ef;
+	height : 50%;
+	position : absolute;
+	bottom : 0;
+}
+.volume-panel .handler{
+	background : #f0f0f0;
+	border : 1px solid #999;
+	width : 9px;
+	height : 4px;
+	position : absolute;
+	bottom : 25px;
+	left : -3px;
+}
