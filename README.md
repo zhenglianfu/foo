@@ -1,6 +1,4 @@
-webDemo
-=======
-
-html/css/js实例
-
-github project 对外展示,非主版本
+foo web
+I like css html js
+just for fun
+see http://zhenglianfu.github.io/foo
