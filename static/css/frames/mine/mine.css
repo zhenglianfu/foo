@@ -1698,6 +1698,10 @@ a:not(.noicon)[href^='#']:not([href='#']):after {
 	content: "\f0c1";
 }
 
+a:not(.noicon)[target="_blank"]:after{
+	content : "\f08e";
+}
+
 /**** button ****/
 button, .button, input[type=subimit], input[type=reset], input[type=button]{
 	
@@ -1959,7 +1963,7 @@ button, .button, input[type=subimit], input[type=reset], input[type=button]{
 	transition : background ease .25s, color ease .25s
 }
 .nav .menu-ext a:hover,.menu-ext li.current a{
-	background : #eee;
+	background : #e0e0e0;
 	color : #222;
 	text-decoration : none;
 	/* border-bottom : 4px solid #42495e; */
