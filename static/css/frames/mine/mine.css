@@ -111,21 +111,19 @@ img,a img {
 }
 /* font set */
 html,body{
-	font-family : Helvetica,Arial,Geneva,sans-serif;
+	font-family : "Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu,Helvetica,Arial,Geneva,sans-serif;
 	font-size : 14px;
 	line-height: 1.5;
 }
-
 .sans-pro,h1,h2,h3,h4,h5,h6{
-	font-family : sans-pro,Helvetica,Arial,Geneva,sans-serif;
+	font-family : "sans-pro","Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu,Helvetica,Arial,Geneva,sans-serif;
 }
-
 .quicksand{
-	font-family : Quicksand,Helvetica,Arial,Geneva,sans-serif;
+	font-family : Quicksand,"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu,Helvetica,Arial,Geneva,sans-serif;
 }
 
 .museo{
-	font-family : Museo,Helvetica,Arial,Geneva,sans-serif;
+	font-family : Museo,"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu,Helvetica,Arial,Geneva,sans-serif;
 }
 
 /**** padding margin ****/
@@ -166,7 +164,8 @@ html,body{
 [class^=icon-]:before,[class*=" icon-"]:before {
 	text-decoration: inherit;
 	display: inline-block;
-	speak: none
+	speak: none;
+	-webkit-font-smoothing: antialiased
 }
 a [class^=icon-], a [class*=' icon-']{
 	display : inline;
@@ -1661,6 +1660,7 @@ a [class^=icon-], a [class*=' icon-']{
 .icon-renren:before {
 	content: "\f18b"
 }
+/*** color ***/
 
 /* type-link */
 a,a:visited {
@@ -1908,6 +1908,7 @@ button, .button, input[type=subimit], input[type=reset], input[type=button]{
 	position : relative;
 	display : block;
 	width : 100%;
+	margin-bottom: 20px;
 }
 .header .nav{
 	clear : both;
@@ -1915,7 +1916,11 @@ button, .button, input[type=subimit], input[type=reset], input[type=button]{
 .nav a:after{
 	float : right;
 }
-.header .nav:after{
+.nav ul{
+	clear : both;
+	display : block;
+}
+.header .nav:after,.nav ul:after{
 	clear : both;
 	content : " ";
 	display : block;
@@ -1927,7 +1932,7 @@ button, .button, input[type=subimit], input[type=reset], input[type=button]{
 }
 .nav .menu{
 	width: 80%;
-	background: #40a0fe
+	background: #368de2
 }
 .nav .menu-ext{
 	width : 20%;
@@ -1956,7 +1961,7 @@ button, .button, input[type=subimit], input[type=reset], input[type=button]{
 	transition : background ease .25s, color ease .25s
 }
 .nav .menu a:hover, .nav .current a{
-	background : #28e;
+	background : #23e;
 	color : #f0f0f0;
 	text-decoration : none;
 	/* border-bottom : 4px solid #204e30; */
@@ -1987,7 +1992,7 @@ button, .button, input[type=subimit], input[type=reset], input[type=button]{
 	z-index : 9;
 }
 .menu .sub-menu-list{
-	background: #40a0fe;
+	background: #368de2;
 }
 .menu-ext .sub-menu-list{
 	background: #42495e
@@ -2147,4 +2152,15 @@ p,ul,ol,dl{
 }
 .h300{
 	hieght : 30em
+}
+.box{
+	border: 1px solid #ccc;
+	padding : 10px;
+	border-radius : 10px;
+}
+.square{
+	border-radius : 0
+}
+.china-indent { 
+	text-indent: 2em; 
 }
