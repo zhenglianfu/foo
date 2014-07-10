@@ -111,19 +111,20 @@ img,a img {
 }
 /* font set */
 html,body{
-	font-family : "Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu,Helvetica,Arial,Geneva,sans-serif;
+	/* font-family : "Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu,Helvetica,Arial,Geneva,sans-serif; */
+	font-family : Helvetica,Arial,Geneva,sans-serif;
 	font-size : 14px;
 	line-height: 1.5;
 }
 .sans-pro,h1,h2,h3,h4,h5,h6{
-	font-family : "sans-pro","Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu,Helvetica,Arial,Geneva,sans-serif;
+	font-family : "sans-pro",Helvetica,Arial,Geneva,sans-serif;
 }
 .quicksand{
-	font-family : Quicksand,"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu,Helvetica,Arial,Geneva,sans-serif;
+	font-family : Quicksand,Helvetica,Arial,Geneva,sans-serif;
 }
 
 .museo{
-	font-family : Museo,"Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu,Helvetica,Arial,Geneva,sans-serif;
+	font-family : Museo,Helvetica,Arial,Geneva,sans-serif;
 }
 
 /**** padding margin ****/
@@ -3610,7 +3611,7 @@ input[type=button].asphalt, a.button.asphalt{
 	font-weight: 800;
 	transition : background ease .25s, color ease .25s
 }
-.nav .menu a:hover, .nav .current a{
+.nav .menu a:hover, .nav .current >a{
 	background : #25c;
 	text-decoration : none;
 	/* border-bottom : 4px solid #204e30; */
