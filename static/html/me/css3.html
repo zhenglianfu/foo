@@ -6,8 +6,9 @@
 <!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
 	<meta charset="utf-8">
-	<title>HOME</title>
+	<title>CSS3</title>
 	<link rel="stylesheet" type="text/css" href="../../css/frames/mine/mine.css">
+	<link rel="stylesheet" type="text/css" href="../../css/frames/mine/demo/css3-demo.css">
 	<!--[if lt IE 7]>
 		<link rel="stylesheet" type="text/css" href="../../css/frames/mine/mine-ie.css">
 	 <![endif]-->
@@ -34,13 +35,13 @@
 							<a href="css3.html">CSS3</a>
 						</li>
 						<li>
-							<a href="sass.html">SASS</a>
+							<a href="csscompiler.html">CSS Compiler</a>
 						</li>
 						<li>
 							<a href="js.html">JavaScript</a>
 						</li>
 						<li>
-							<a href="frame.html">Little Frame</a>
+							<a href="frame.html">Little Framework</a>
 						</li>
 						<li>
 							<a href="all.html">ALL IN ONE</a>
@@ -66,9 +67,184 @@
 			</div>
 		</div>
 		<div class="container">
-			
+			<div class="row padded">
+				<div class="row">
+					<div class="half one slideInLeft animation">
+						<h5>I'm slide from left</h5>
+						<div></div>
+					</div>
+					<div class="half one slideInRight animation">
+						<h5>I'm slide from right</h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="half one slideInUp animation">
+						<h5>I'm slide from bottom</h5>
+					</div>
+					<div class="half one slideInDown animation">
+						<h5>I'm slide from top</h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="third one bounceIn animation">
+						<h5>bounce myself </h5>
+					</div>
+					<div class="third one bounceInUp animation">
+						<h5>bounce from bottom </h5>
+					</div>
+					<div class="third one bounceInDown animation">
+						<h5>bounce from top </h5>
+					</div>
+				</div>
+				<div class="row">
+					<div class="whole">
+						<button class="fixed center large animation bounceInLeft asphalt sans-pro" style="margin-left:-5em;min-width:10em;" id="demo_button">
+							I do something
+						</button>
+					</div>
+					<br>
+					<br>
+					<br>
+					<br>
+				</div>
+				<div class="row">
+					<div class="half one padded">
+						<h4>Attention seekers</h4>
+						<div>
+							<button class="gap-bottom" data-test="flash"> flash </button>
+							<button class="gap-bottom" data-test="bounce"> bounce </button>
+							<button class="gap-bottom" data-test="shake"> shake </button>
+							<button class="gap-bottom" data-test="swing"> swing </button>
+							<button class="gap-bottom" data-test="tada"> tada </button>
+							<button class="gap-bottom" data-test="wobble"> wobble </button>
+							<button class="gap-bottom" data-test="pulse"> pulse </button>
+						</div>
+					</div>
+					<div class="half one padded">
+						<h4>Flippers</h4>
+						<div>
+							<button class="gap-bottom" data-test="flip"> flip </button>
+							<button class="gap-bottom" data-test="flipInX"> flipInX </button>
+							<button class="gap-bottom" data-test="flipOutX"> flipOutX </button>
+							<button class="gap-bottom" data-test="flipInY"> flipInY </button>
+							<button class="gap-bottom" data-test="flipOutY"> flipOutY </button>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="half one padded">
+						<h4>Sliding entrances</h4>
+						<div>
+							<button class="gap-bottom" data-test="slideInDown"> slideInDown </button>
+							<button class="gap-bottom" data-test="slideInUp"> slideInUp </button>
+							<button class="gap-bottom" data-test="slideInLeft"> slideInLeft </button>
+							<button class="gap-bottom" data-test="slideInRight"> slideInRight </button>
+						</div>
+					</div>
+					<div class="half one padded">
+						<h4>Sliding exits</h4>
+						<div>
+							<button class="gap-bottom" data-test="slideOutDown"> slideOutDown </button>
+							<button class="gap-bottom" data-test="slideOutUp"> slideOutUp </button>
+							<button class="gap-bottom" data-test="slideOutLeft"> slideOutLeft </button>
+							<button class="gap-bottom" data-test="slideOutRight"> slideOutRight </button>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="half one padded">
+						<h4>Fading entrances</h4>
+						<div>
+							<button class="gap-bottom" data-test="fadeIn"> fadeIn </button>
+							<button class="gap-bottom" data-test="fadeInUp"> fadeInUp </button>
+							<button class="gap-bottom" data-test="fadeInDown"> fadeInDown </button>
+							<button class="gap-bottom" data-test="fadeInLeft"> fadeInLeft </button>
+							<button class="gap-bottom" data-test="fadeInRight"> fadeInRight </button>
+							<button class="gap-bottom" data-test="fadeInUpBig"> fadeInUpBig </button>
+							<button class="gap-bottom" data-test="fadeInDownBig"> fadeInDownBig </button>
+							<button class="gap-bottom" data-test="fadeInLeftBig"> fadeInLeftBig </button>
+							<button class="gap-bottom" data-test="fadeInRightBig"> fadeInRightBig </button>
+						</div>
+					</div>
+					<div class="half one padded">
+						<h4>Fading exits</h4>
+						<div>
+							<button class="gap-bottom" data-test="fadeOut"> fadeOut </button>
+							<button class="gap-bottom" data-test="fadeOutUp"> fadeOutUp </button>
+							<button class="gap-bottom" data-test="fadeOutDown"> fadeOutDown </button>
+							<button class="gap-bottom" data-test="fadeOutLeft"> fadeOutLeft </button>
+							<button class="gap-bottom" data-test="fadeOutRight"> fadeOutRight </button>
+							<button class="gap-bottom" data-test="fadeOutUpBig"> fadeOutUpBig </button>
+							<button class="gap-bottom" data-test="fadeOutDownBig"> fadeOutDownBig </button>
+							<button class="gap-bottom" data-test="fadeOutLeftBig"> fadeOutLeftBig </button>
+							<button class="gap-bottom" data-test="fadeOutRightBig"> fadeOutRightBig </button>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="half one padded">
+						<h4>Bounce enterances</h4>
+						<div>
+							<button class="gap-bottom" data-test="bounceIn"> bounceIn </button>
+							<button class="gap-bottom" data-test="bounceInUp"> bounceInUp </button>
+							<button class="gap-bottom" data-test="bounceInRight"> bounceInRight </button>
+							<button class="gap-bottom" data-test="bounceInDown"> bounceInDown </button>
+							<button class="gap-bottom" data-test="bounceInLeft"> bounceInLeft </button>
+						</div>
+					</div>
+					<div class="half one padded">
+						<h4>Bounce exits</h4>
+						<div>
+							<button class="gap-bottom" data-test="bounceOut"> bounceOut </button>
+							<button class="gap-bottom" data-test="bounceOutUp"> bounceOutUp </button>
+							<button class="gap-bottom" data-test="bounceOutRight"> bounceOutRight </button>
+							<button class="gap-bottom" data-test="bounceOutDown"> bounceOutDown </button>
+							<button class="gap-bottom" data-test="bounceOutLeft"> bounceOutLeft </button>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="one half padded">
+						<h4>Rotating entrances</h4>
+						<div>
+							<button class="gap-bottom" data-test="rotateIn"> rotateIn </button>
+							<button class="gap-bottom" data-test="rotateInDownLeft"> rotateInDownLeft </button>
+							<button class="gap-bottom" data-test="rotateInDownRight"> rotateInDownRight </button>
+							<button class="gap-bottom" data-test="rotateInUpLeft"> rotateInUpLeft </button>
+							<button class="gap-bottom" data-test="rotateInUpRight"> rotateInUpRight </button>
+						</div>
+					</div>
+					<div class="one half padded">
+						<h4>Rotating exits</h4>
+						<div>
+							<button class="gap-bottom" data-test="rotateOut"> rotateOut </button>
+							<button class="gap-bottom" data-test="rotateOutDownLeft"> rotateOutDownLeft </button>
+							<button class="gap-bottom" data-test="rotateOutDownRight"> rotateOutDownRight </button>
+							<button class="gap-bottom" data-test="rotateOutUpLeft"> rotateOutUpLeft </button>
+							<button class="gap-bottom" data-test="rotateOutUpRight"> rotateOutUpRight </button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row padded">
+				<div class="row">
+					<h4>CSS Cricle</h4>
+					<div class="whole" style="height:310px;position:relative;">
+						<div id="left-half">
+							<div class="pie"></div>
+						</div>
+						<div id="right-half">
+							<div class="pie"></div>
+						</div>
+						<div id="ring-bg"></div>
+						<div id="ring-fill"></div>
+					</div>
+				</div>
+			</div>
 		</div>
 		<div class="footer"></div>
 	</div>
+	<script type="text/javascript" src="../../js/modules/simp/core.js"></script>
+	<script type="text/javascript" src='./js/css3.js'></script>
 </body>	
 </html>
