@@ -19,7 +19,7 @@
 			simply = {
 				extend : function(){
 					var src, copyIsArray, copy, name, options, clone,
-					target = arguements[0] || {}, asArray, 
+					target = arguments[0] || {}, asArray, 
 					i = 1,
 					length = arguments.length,
 					deep = false;
