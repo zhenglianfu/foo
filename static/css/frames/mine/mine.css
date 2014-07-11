@@ -4558,6 +4558,13 @@ p,ul,ol,dl{
 .china-indent { 
 	text-indent: 2em; 
 }
+/** table **/
+td,th{
+	text-align : left;
+}
+table th{
+	font-weight : 700;
+}
 /* for mobile or tablet*/
 @media (max-width: 767px){
 	/* fill the whole row*/
