@@ -1,32 +1,4 @@
-.slideInDown-hover:hover {
-		animation-name : slideInDown;
-		-webkit-animation-name : slideInDown;
-}
-.slideInUp-hover:hover {
-		animation-name : slideInUp;
-		-webkit-animation-name : slideInUp;
-}
-.slideInLeft-hover:hover {
-		animation-name : slideInLeft;
-		-webkit-animation-name : slideInLeft;
-}
-.slideInRight-hover:hover {
-		animation-name : slideInRight;
-		-webkit-animation-name : slideInRight;
-}
-.bounceIn-hover:hover{
-	animation-name : bounceIn;
-	-webkit-animation-name : bounceIn;
-}
-.bounceInUp-hover:hover{
-	animation-name : bounceInUp;
-	-webkit-animation-name : bounceInUp;
-}
 
-.bounceInDown-hover:hover{
-	animation-name : bounceInDown;
-	-webkit-animation-name : bounceInDown;
-}
 /*clock*/
 #right-half, #left-half{
 	position : absolute;
@@ -76,4 +48,10 @@
 	border-radius: 300px;
 	background: #eee;
 	box-shadow: 0 0 6px #666;
+}
+
+#wallpaper{
+	height : 400px;
+	background: #313442;
+	position: relative;
 }
