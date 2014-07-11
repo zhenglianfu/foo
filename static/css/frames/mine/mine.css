@@ -2064,7 +2064,9 @@ a [class^=icon-], a [class*=' icon-']{
 .icon-renren:before {
 	content: "\f18b"
 }
-/*** color ***/
+
+/*** font-color & bg-color ***/
+
 
 /* type-link */
 a, a:visited {
@@ -2867,6 +2869,26 @@ input[type=button].asphalt, a.button.asphalt{
 	animation-name : fadeIn;
 	-webkit-animation-name : fadeIn;
 }
+@keyframes fadeOut{
+	from{
+		opacity : 1;
+	}
+	100%{
+		opacity : 0;
+	}
+}
+@-webkit-keyframes fadeOut{
+	from{
+		opacity : 1;
+	}
+	100%{
+		opacity : 0;
+	}
+}
+.fadeOut{
+	animation-name : fadeOut;
+	-webkit-animation-name : fadeOut;
+}
 @keyframes fadeInUp{
 	from{
 		opacity : 0;
@@ -2894,6 +2916,34 @@ input[type=button].asphalt, a.button.asphalt{
 .fadeInUp{
 	animation-name : fadeInUp;
 	-webkit-animation-name : fadeInUp;
+}
+@keyframes fadeOutUp{
+	from{
+		opacity : 1;
+		transform : translateY(0);
+		-ms-transform : translateY(0);		
+	}
+	100%{
+		opacity : 0;
+		transform : translateY(30px);
+		-ms-transform : translateY(30px);
+	}
+}
+@-webkit-keyframes fadeOutUp{
+	from{
+		opacity : 1;
+		transform : translateY(0);
+		-webkit-transform : translateY(0);
+	}
+	100%{
+		opacity : 0;
+		transform : translateY(-30px);
+		-webkit-transform : translateY(-30px);
+	}
+}
+.fadeOutUp{
+	animation-name : fadeOutUp;
+	-webkit-animation-name : fadeOutUp;
 }
 @keyframes fadeInUpBig{
 	from{
@@ -2923,6 +2973,34 @@ input[type=button].asphalt, a.button.asphalt{
 	animation-name : fadeInUpBig;
 	-webkit-animation-name : fadeInUpBig;
 }
+@keyframes fadeOutUpBig{
+	from{
+		opacity : 1;
+		transform : translateY(0);
+		-ms-transform : translateY(0);
+	}
+	100%{
+		opacity : 0;
+		transform : translateY(-2000px);
+		-ms-transform : translateY(-2000px);
+	}
+}
+@-webkit-keyframes fadeOutUpBig{
+	from{
+		opacity : 1;
+		transform : translateY(0);
+		-webkit-transform : translateY(0);
+	}
+	100%{
+		opacity : 0;
+		transform : translateY(-2000px);
+		-webkit-transform : translateY(-2000px);
+	}
+}
+.fadeOutUpBig{
+	animation-name : fadeOutUpBig;
+	-webkit-animation-name : fadeOutUpBig;
+}
 @keyframes fadeInDown{
 	from{
 		opacity : 0;
@@ -2950,6 +3028,34 @@ input[type=button].asphalt, a.button.asphalt{
 .fadeInDown{
 	animation-name : fadeInDown;
 	-webkit-animation-name : fadeInDown;
+}
+@keyframes fadeOutDown{
+	from{
+		opacity : 1;
+		transform : translateY(0);
+		-ms-transform : translateY(0);
+	}
+	100%{
+		opacity : 0;
+		transform : translateY(30px);
+		-ms-transform : translateY(30px);
+	}
+}
+@-webkit-keyframes fadeOutDown{
+	from{
+		opacity : 1;
+		transform : translateY(0);
+		-webkit-transform : translateY(0);
+	}
+	100%{
+		opacity : 0;
+		transform : translateY(30px);
+		-webkit-transform : translateY(30px);
+	}
+}
+.fadeOutDown{
+	animation-name : fadeOutDown;
+	-webkit-animation-name : fadeOutDown;
 }
 @keyframes fadeInDownBig{
 	from{
@@ -2979,6 +3085,34 @@ input[type=button].asphalt, a.button.asphalt{
 	animation-name : fadeInDownBig;
 	-webkit-animation-name : fadeInDownBig;
 }
+@keyframes fadeOutDownBig{
+	from{
+		opacity : 1;
+		transform : translateY(0);
+		-ms-transform : translateY(0);
+	}
+	100%{
+		opacity : 0;
+		transform : translateY(2000px);
+		-ms-transform : translateY(2000px);
+	}
+}
+@-webkit-keyframes fadeOutDownBig{
+	from{
+		opacity : 1;
+		transform : translateY(0);
+		-webkit-transform : translateY(0);
+	}
+	100%{
+		opacity : 0;
+		transform : translateY(2000px);
+		-webkit-transform : translateY(2000px);
+	}
+}
+.fadeOutDownBig{
+	animation-name : fadeOutDownBig;
+	-webkit-animation-name : fadeOutDownBig;
+}
 @keyframes fadeInLeft{
 	from{
 		opacity : 0;
@@ -3006,6 +3140,34 @@ input[type=button].asphalt, a.button.asphalt{
 .fadeInLeft{
 	animation-name : fadeInLeft;
 	-webkit-animation-name : fadeInLeft;
+}
+@keyframes fadeOutLeft{
+	from{
+		opacity : 1;
+		transform : translateX(0);
+		-ms-transform : translateX(0);
+	}
+	100%{
+		opacity : 0;
+		transform : translateX(-30px);
+		-ms-transform : translateX(-30px);
+	}
+}
+@-webkit-keyframes fadeOutLeft{
+	from{
+		opacity : 1;
+		transform : translateX(0);
+		-webkit-transform : translateX(0);
+	}
+	100%{
+		opacity : 0;
+		transform : translateX(-30px);
+		-webkit-transform : translateX(-30px);
+	}
+}
+.fadeOutLeft{
+	animation-name : fadeOutLeft;
+	-webkit-animation-name : fadeOutLeft;
 }
 @keyframes fadeInLeftBig{
 	from{
@@ -3035,6 +3197,34 @@ input[type=button].asphalt, a.button.asphalt{
 	animation-name : fadeInLeftBig;
 	-webkit-animation-name : fadeInLeftBig;
 }
+@keyframes fadeOutLeftBig{
+	from{
+		opacity : 1;
+		transform : translateX(0);
+		-ms-transform : translateX(0);
+	}
+	100%{
+		opacity : 0;
+		transform : translateX(-2000px);
+		-ms-transform : translateX(-2000px);
+	}
+}
+@-webkit-keyframes fadeOutLeftBig{
+	from{
+		opacity : 1;
+		transform : translateX(0);
+		-webkit-transform : translateX(0);
+	}
+	100%{
+		opacity : 0;
+		transform : translateX(-2000px);
+		-webkit-transform : translateX(-2000px);
+	}
+}
+.fadeOutLeftBig{
+	animation-name : fadeOutLeftBig;
+	-webkit-animation-name : fadeOutLeftBig;
+}
 @keyframes fadeInRight{
 	from{
 		opacity : 0;
@@ -3063,6 +3253,34 @@ input[type=button].asphalt, a.button.asphalt{
 	animation-name : fadeInRight;
 	-webkit-animation-name : fadeInRight;
 }
+@keyframes fadeOutRight{
+	from{
+		opacity : 1;
+		transform : translateX(0);
+		-ms-transform : translateX(0);
+	}
+	100%{
+		opacity : 0;
+		transform : translateX(30px);
+		-ms-transform : translateX(30px);
+	}
+}
+@-webkit-keyframes fadeOutRight{
+	from{
+		opacity : 1;
+		transform : translateX(0);
+		-webkit-transform : translateX(0);
+	}
+	100%{
+		opacity : 0;
+		transform : translateX(30px);
+		-webkit-transform : translateX(30px);
+	}
+}
+.fadeOutRight{
+	animation-name : fadeOutRight;
+	-webkit-animation-name : fadeOutRight;
+}
 @keyframes fadeInRightBig{
 	from{
 		opacity : 0;
@@ -3090,6 +3308,34 @@ input[type=button].asphalt, a.button.asphalt{
 .fadeInRightBig{
 	animation-name : fadeInRightBig;
 	-webkit-animation-name : fadeInRightBig;
+}
+@keyframes fadeOutRightBig{
+	from{
+		opacity : 1;
+		transform : translateX(0);
+		-ms-transform : translateX(0);
+	}
+	100%{
+		opacity : 0;
+		transform : translateX(2000px);
+		-ms-transform : translateX(2000px);
+	}
+}
+@-webkit-keyframes fadeOutRightBig{
+	from{
+		opacity : 1;
+		transform : translateX(0);
+		-webkit-transform : translateX(0);
+	}
+	100%{
+		opacity : 0;
+		transform : translateX(2000px);
+		-webkit-transform : translateX(2000px);
+	}
+}
+.fadeOutRightBig{
+	animation-name : fadeOutRightBig;
+	-webkit-animation-name : fadeOutRightBig;
 }
 @keyframes flash{
 	25%,75%{
@@ -3565,6 +3811,476 @@ input[type=button].asphalt, a.button.asphalt{
 	-webkit-animation-name : flipOutY;
 }
 
+@keyframes rotateIn{
+	0%{
+		opacity: 0;
+		transform: rotate(-150deg);
+		-ms-transform: rotate(-150deg);
+	}
+	100%{
+		opacity: 1;
+		transform : rotate(0deg);
+		-ms-transform: rotate(-150deg);
+	}
+}
+
+@-webkit-keyframes rotateIn{
+	0%{
+		opacity: 0;
+		transform: rotate(-150deg);
+		-webkit-transform: rotate(-150deg);
+	}
+	100%{
+		opacity: 1;
+		transform : rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	}
+}
+
+.rotateIn{
+	animation-name : rotateIn;
+	-webkit-animation-name : rotateIn;
+}
+
+@keyframes rotateOut{
+	0%{
+		opacity: 1;
+		transform : rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+	100%{
+		opacity: 0;
+		transform: rotate(150deg);
+		-ms-transform: rotate(150deg);
+	}
+}
+
+@-webkit-keyframes rotateOut{
+	0%{
+		opacity: 1;
+		transform : rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	}
+	100%{
+		opacity: 0;
+		transform: rotate(150deg);
+		-webkit-transform: rotate(150deg);
+	}
+}
+
+.rotateOut{
+	animation-name : rotateOut;
+	-webkit-animation-name : rotateOut;
+}
+
+@keyframes rotateInDownLeft{
+	0%{
+		opacity : 0;
+		transform-origin: left bottom;
+		-ms-transform-origin: left bottom;
+		transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+	}
+	100%{
+		opacity : 1;
+		transform-origin: left bottom;
+		-ms-transform-origin: left bottom;
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+}
+
+@-webkit-keyframes rotateInDownLeft{
+	0%{
+		opacity : 0;
+		transform-origin: left bottom;
+		-webkit-transform-origin: left bottom;
+		transform: rotate(-90deg);
+		-webkit-transform: rotate(-90deg);
+	}
+	100%{
+		opacity : 1;
+		transform-origin: left bottom;
+		-webkit-transform-origin: left bottom;
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	}
+}
+
+.rotateInDownLeft {
+	animation-name : rotateInDownLeft;
+	-webkit-animation-name : rotateInDownLeft;
+}
+
+@keyframes rotateOutDownLeft{
+	0%{
+		opacity : 1;
+		transform-origin: left bottom;
+		-ms-transform-origin: left bottom;
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+	100%{
+		opacity : 0;
+		transform-origin: left bottom;
+		-ms-transform-origin: left bottom;
+		transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
+	}
+}
+
+@-webkit-keyframes rotateOutDownLeft{
+	0%{
+		opacity : 1;
+		transform-origin: left bottom;
+		-webkit-transform-origin: left bottom;
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	}
+	100%{
+		opacity : 0;
+		transform-origin: left bottom;
+		-webkit-transform-origin: left bottom;
+		transform: rotate(90deg);
+		-webkit-transform: rotate(90deg);
+	}
+}
+
+.rotateOutDownLeft {
+	animation-name : rotateOutDownLeft;
+	-webkit-animation-name : rotateOutDownLeft;
+}
+
+@keyframes rotateInUpLeft{
+	0%{
+		opacity : 0;
+		transform-origin: left top;
+		-ms-transform-origin: left top;
+		transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
+	}
+	100%{
+		opacity : 1;
+		transform-origin: left top;
+		-ms-transform-origin: left top;
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+}
+
+@-webkit-keyframes rotateInUpLeft{
+	0%{
+		opacity : 0;
+		transform-origin: left top;
+		-webkit-transform-origin: left top;
+		transform: rotate(90deg);
+		-webkit-transform: rotate(90deg);
+	}
+	100%{
+		opacity : 1;
+		transform-origin: left bottom;
+		-webkit-transform-origin: left bottom;
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	}
+}
+
+.rotateInUpLeft {
+	animation-name : rotateInUpLeft;
+	-webkit-animation-name : rotateInUpLeft;
+}
+
+@keyframes rotateOutUpLeft{
+	0%{
+		opacity : 1;
+		transform-origin: left top;
+		-ms-transform-origin: left top;
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+	100%{
+		opacity : 0;
+		transform-origin: left top;
+		-ms-transform-origin: left top;
+		transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+	}
+}
+
+@-webkit-keyframes rotateOutUpLeft{
+	0%{
+		opacity : 1;
+		transform-origin: left top;
+		-webkit-transform-origin: left top;
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	}
+	100%{
+		opacity : 0;
+		transform-origin: left top;
+		-webkit-transform-origin: left top;
+		transform: rotate(-90deg);
+		-webkit-transform: rotate(-90deg);
+	}
+}
+
+.rotateOutUpLeft {
+	animation-name : rotateOutUpLeft;
+	-webkit-animation-name : rotateOutUpLeft;
+}
+
+@keyframes rotateInDownRight{
+	0%{
+		opacity : 0;
+		transform-origin: right bottom;
+		-ms-transform-origin: right bottom;
+		transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
+	}
+	100%{
+		opacity : 1;
+		transform-origin: right bottom;
+		-ms-transform-origin: right bottom;
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+}
+
+@-webkit-keyframes rotateInDownRight{
+	0%{
+		opacity : 0;
+		transform-origin: right bottom;
+		-webkit-transform-origin: right bottom;
+		transform: rotate(90deg);
+		-webkit-transform: rotate(90deg);
+	}
+	100%{
+		opacity : 1;
+		transform-origin: right bottom;
+		-webkit-transform-origin: right bottom;
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	}
+}
+
+.rotateInDownRight {
+	animation-name : rotateInDownRight;
+	-webkit-animation-name : rotateInDownRight;
+}
+
+@keyframes rotateOutDownRight{
+	0%{
+		opacity : 1;
+		transform-origin: right bottom;
+		-ms-transform-origin: right bottom;
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+	100%{
+		opacity : 0;
+		transform-origin: right bottom;
+		-ms-transform-origin: right bottom;
+		transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+	}
+}
+
+@-webkit-keyframes rotateOutDownRight{
+	0%{
+		opacity : 1;
+		transform-origin: right bottom;
+		-webkit-transform-origin: right bottom;
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	}
+	100%{
+		opacity : 0;
+		transform-origin: right bottom;
+		-webkit-transform-origin: right bottom;
+		transform: rotate(-90deg);
+		-webkit-transform: rotate(-90deg);
+	}
+}
+
+.rotateOutDownRight {
+	animation-name : rotateOutDownRight;
+	-webkit-animation-name : rotateOutDownRight;
+}
+
+@keyframes rotateInUpRight{
+	0%{
+		opacity : 0;
+		transform-origin: right top;
+		-ms-transform-origin: right top;
+		transform: rotate(-90deg);
+		-ms-transform: rotate(-90deg);
+	}
+	100%{
+		opacity : 1;
+		transform-origin: right top;
+		-ms-transform-origin: right top;
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+}
+
+@-webkit-keyframes rotateInUpRight{
+	0%{
+		opacity : 0;
+		transform-origin: right top;
+		-webkit-transform-origin: right top;
+		transform: rotate(-90deg);
+		-webkit-transform: rotate(-90deg);
+	}
+	100%{
+		opacity : 1;
+		transform-origin: right top;
+		-webkit-transform-origin: right top;
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	}
+}
+
+.rotateInUpRight {
+	animation-name : rotateInUpRight;
+	-webkit-animation-name : rotateInUpRight;
+}
+
+@keyframes rotateOutUpRight{
+	0%{
+		opacity : 1;
+		transform-origin: right top;
+		-ms-transform-origin: right top;
+		transform: rotate(0deg);
+		-ms-transform: rotate(0deg);
+	}
+	100%{
+		opacity : 0;
+		transform-origin: right top;
+		-ms-transform-origin: right top;
+		transform: rotate(90deg);
+		-ms-transform: rotate(90deg);
+	}
+}
+
+@-webkit-keyframes rotateOutUpRight{
+	0%{
+		opacity : 1;
+		transform-origin: right top;
+		-webkit-transform-origin: right top;
+		transform: rotate(0deg);
+		-webkit-transform: rotate(0deg);
+	}
+	100%{
+		opacity : 0;
+		transform-origin: right top;
+		-webkit-transform-origin: right top;
+		transform: rotate(90deg);
+		-webkit-transform: rotate(90deg);
+	}
+}
+
+.rotateOutUpRight {
+	animation-name : rotateOutUpRight;
+	-webkit-animation-name : rotateOutUpRight;
+}
+
+.hinge{
+	animation-name : hinge;
+	-webkit-animation-name : hinge;	
+}
+
+.rollIn{
+	animation-name : rollIn;
+	-webkit-animation-name : rollIn;
+}
+
+.rollOut{
+	animation-name : rollOut;
+	-webkit-animation-name : rollOut;
+}
+
+@keyframes lightSpeedIn{
+	0%{
+		transform : translateX(150%) skewX(-30deg);
+		-ms-transform : translateX(150%) skewX(-30deg);
+		opacity : 0;
+	}
+	60%{
+		transform : translateX(-20%) skewX(20deg);
+		-ms-transform : translateX(-20%) skewX(20deg);
+	}
+	80%{
+		transform : translateX(0) skewX(-15deg);
+		-ms-transform : translateX(0) skewX(-15deg);
+	}
+	100%{
+		transform : translateX(0) skewX(0deg);
+		-ms-transform : translateX(0) skewX(0deg);
+		opacity : 1;
+	}
+}
+@-webkit-keyframes lightSpeedIn{
+	0%{
+		transform : translateX(150%) skewX(-30deg);
+		-webkit-transform : translateX(150%) skewX(-30deg);
+		opacity : 0;
+	}
+	60%{
+		transform : translateX(-20%) skewX(20deg);
+		-webkit-transform : translateX(-20%) skewX(20deg);
+	}
+	80%{
+		transform : translateX(0) skewX(-15deg);
+		-webkit-transform : translateX(0) skewX(-15deg);
+	}
+	100%{
+		transform : translateX(0) skewX(0deg);
+		-webkit-transform : translateX(0) skewX(0deg);
+		opacity : 1;
+	}
+}
+.lightSpeedIn{
+	animation-name : lightSpeedIn;
+	-webkit-animation-name : lightSpeedIn;
+}
+.animation.lightSpeedIn {
+	-webkit-animation-duration:.5s;
+	animation-duration:.5s
+}
+
+@keyframes lightSpeedOut{
+	0%{
+		transform : translateX(0) skewX(0deg);
+		-ms-transform : translateX(0) skewX(0deg);
+		opacity : 1;
+	}
+	100%{
+		transform : translateX(100%) skewX(-30deg);
+		-ms-transform : translateX(100%) skewX(-30deg);
+		opacity : 0;
+	}
+}
+@-webkit-keyframes lightSpeedOut{
+	0%{
+		transform : translateX(0%) skewX(0deg);
+		-webkit-transform : translateX(0%) skewX(0deg);
+		opacity : 1;
+	}
+	100%{
+		transform : translateX(100%) skewX(-30deg);
+		-webkit-transform : translateX(100%) skewX(-30deg);
+		opacity : 0;
+	}
+}
+.lightSpeedOut{
+	animation-name : lightSpeedOut;
+	-webkit-animation-name : lightSpeedOut;
+}
+.animation.lightSpeedOut {
+	-webkit-animation-duration: .25s;
+	animation-duration: .25s
+}
 
 /**** page set ****/
 .page{
@@ -3667,9 +4383,8 @@ input[type=button].asphalt, a.button.asphalt{
 	min-width : 100%;
 	position : absolute;
 	display : none;
+	clear : both;
 	z-index : 9;
-}
-.menu .sub-menu-list{
 	background: #368de2;
 }
 .menu-ext .sub-menu-list{
