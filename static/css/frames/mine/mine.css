@@ -3608,7 +3608,7 @@ input[type=button].asphalt, a.button.asphalt{
 	padding : .25em 1.25em;
 	/* border-bottom : 4px solid transparent; */
 	color : #fff;
-	font-weight: 800;
+	font-weight: 700;
 	transition : background ease .25s, color ease .25s
 }
 .nav .menu a:hover, .nav .current >a{
