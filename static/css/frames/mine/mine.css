@@ -2067,7 +2067,7 @@ a [class^=icon-], a [class*=' icon-']{
 /*** color ***/
 
 /* type-link */
-a,a:visited {
+a, a:visited {
 	text-decoration: none;
 	color: #2880ff;
 	transition: color ease .25s;
@@ -2098,12 +2098,40 @@ a:before {
 	padding-right: .25em;
 }
 
-a:not(.noicon)[href^='#']:not([href='#']):after {
+a[href^='#']:not(.noicon):not([href='#']):after {
 	content: "\f0c1";
 }
 
-a:not(.noicon)[target="_blank"]:after{
+a[target="_blank"]:not(.noicon):after{
 	content : "\f08e";
+}
+
+a[rel="home"]:not(.noicon):before, button[rel="home"]:not(.noicon):before{
+	content : "\f015";
+}
+
+a[href$=".jpg"]:not(.noicon):after, a[href$=".jpeg"]:not(.noicon):after, a[href$=".png"]:not(.noicon):after, a[href$=".gif"]:not(.noicon):after, a[href$=".svg"]:not(.noicon):after{
+	content : "\f03e";
+}
+
+a:not(.noicon)[rel="search"]:before, button:not(.noicon)[rel="search"]:before{
+	content : "f\002";
+}
+
+a:not(.noicon)[rel="author"]:before, button:not(.noicon)[rel="author"]:before{
+	content : "f\007";
+}
+
+a:not(.noicon)[rel="help"]:before, button:not(.noicon)[rel="help"]:before {
+	content: "\f059";
+}
+
+a:not(.noicon)[rel="tag"]:before, button:not(.noicon)[rel="tag"]:before {
+	content: "\f02b";
+}
+
+a:not(.noicon)[href^="https:"]:after {
+	content : "\f023";
 }
 
 /**** button ****/
