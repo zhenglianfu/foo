@@ -20,7 +20,7 @@
 	<div class='page'>
 		<div class="header">
 			<div class="nav">
-				<div class="menu slideInDown animation">
+				<div class="menu animation">
 					<ul>
 						<li>
 							<a href="one.html" rel="home">
@@ -36,8 +36,13 @@
 						<li>
 							<a href="csscompiler.html">CSS Compiler</a>
 						</li>
-						<li>
+						<li class="menu-grp">
 							<a href="js.html">JavaScript</a>
+							<ul class="sub-menu-list">
+								<li><a href="#">Little JS</a></li>
+								<li><a href="#">Little Pattern</a></li>
+								<li><a href="#">Little MV*</a></li>
+							</ul>
 						</li>
 						<li>
 							<a href="frame.html">Little Framework</a>
@@ -47,7 +52,7 @@
 						</li>
 					</ul>
 				</div>
-				<div class="menu menu-ext animation slideInDown delay-deci-sec">
+				<div class="menu menu-ext">
 					<ul>
 						<li class="menu-grp">
 							<a href="#other" class="noicon">
@@ -66,7 +71,7 @@
 			</div>
 		</div>
 		<div class="container">
-			<div class="row padded">
+			<div class="padded">
 				<div class="row">
 					<div class="half one slideInLeft animation">
 						<h5>I'm slide from left</h5>
@@ -224,6 +229,16 @@
 						</div>
 					</div>
 				</div>
+				<div class="row">
+					<div class="one half padded">
+						<h4>Specials</h4>
+						<div>
+							<button class="gap-bottom" data-test="hinge"> hinge </button>
+							<button class="gap-bottom" data-test="lightSpeedIn"> lightSpeedIn </button>
+							<button class="gap-bottom" data-test="lightSpeedOut"> lightSpeedOut </button>
+						</div>
+					</div>
+				</div>
 			</div>
 			<div class="row padded">
 				<div class="row">
@@ -239,6 +254,10 @@
 						<div id="ring-fill"></div>
 					</div>
 				</div>
+			</div>
+			<div class="row padded">
+				<h4>Wallpaper Switch</h4>
+				<div class="whole" id="wallpaper"></div>
 			</div>
 		</div>
 		<div class="footer"></div>
