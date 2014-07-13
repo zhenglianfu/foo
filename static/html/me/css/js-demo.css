@@ -1,0 +1,9 @@
+@CHARSET "UTF-8";
+
+#code-panel{
+	height : 700px;
+	border : 1px solid #ccc;
+	padding : 5px;
+}
+
+
