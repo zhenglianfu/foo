@@ -4660,6 +4660,7 @@ table.question thead tr th, table.question thead tr td{
 } 
 .form .fieldset{
 	position: relative;
+	padding : 1px 10px;
 	padding-top : .8em;
 	margin-top: 10px;
 	border : 1px solid #ccc;
@@ -4679,6 +4680,18 @@ table.question thead tr th, table.question thead tr td{
 	margin : 20px 0 10px 0;
 }
 
+input, textarea, select{
+	border : 1px solid #d8d8d8;
+	vertical-align : middle;
+}
+
+input[type="text"], input[type="url"], input[type="email"], input[type="search"], 
+input[type="date"], input[type="number"], input[type="tel"], input[type="password"], textarea {
+	padding : 1px 5px;
+	min-height : 28px;
+	box-shadow : 0 1px 2px rgba(0, 0, 0, .075) inset;
+	border-radius : 4px; 
+}
 
 /* for mobile or tablet*/
 @media (max-width: 767px){
