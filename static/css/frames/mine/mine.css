@@ -4674,6 +4674,10 @@ table.question thead tr th, table.question thead tr td{
 	background : #fff;
 	font-size : 1em;
 }
+.fm-footer{
+	clear : both;
+	margin : 20px 0 10px 0;
+}
 
 
 /* for mobile or tablet*/
