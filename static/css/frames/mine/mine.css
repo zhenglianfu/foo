@@ -4582,7 +4582,7 @@ td,th{
 
 table thead th, table tfoot td{
 	font-weight : 700;
-	background: #eee;
+	background: #e4e4e4;
 	color: #5a5a5a;
 }
 
@@ -4673,6 +4673,10 @@ table.question thead tr th, table.question thead tr td{
 	margin-left : 10px;
 	background : #fff;
 	font-size : 1em;
+}
+.fm-footer{
+	clear : both;
+	margin : 20px 0 10px 0;
 }
 
 
