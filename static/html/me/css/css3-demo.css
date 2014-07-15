@@ -1,5 +1,5 @@
 
-/*clock*/
+/* ring */
 #right-half, #left-half{
 	position : absolute;
 	width: 300px;
@@ -42,6 +42,7 @@
 	box-shadow: 0 0 8px #444 inset;
 	-moz-box-shadow: 0 0 8px #444 inset;
 }
+
 #ring-bg{
 	height:300px;
 	width:300px;
@@ -54,4 +55,69 @@
 	height : 400px;
 	background: #313442;
 	position: relative;
+}
+
+.gradient .panel{
+	height : 150px;
+	background : #34cdde;
+}
+
+.gradient .gradient-left{
+	background : linear-gradient(left,#6A8288, #34cdde); 	
+	background : -moz-linear-gradient(left,#6A8288,#34cdde);
+	background : -webkit-gradient(linear,left,right,from(#6A8288), to(#34cdde));
+	background : -webkit-linear-gradient(left,#6A8288, #34cdde); 
+}
+
+.gradient .gradient-left-steps{
+	background : linear-gradient(left,#eee, #34cdde,#eee, #34cdde,#eee, #34cdde); 	
+	background : -moz-linear-gradient(left,#eee,#34cdde,#eee, #34cdde,#eee, #34cdde);
+	background : -webkit-gradient(linear,left,right,from(#eee), color-stop(#34cdde), color-stop(#eee),color-stop(#34cdde), color-stop(#eee), to(#34cdde));
+	background : -webkit-linear-gradient(left,#eee, #34cdde,#eee, #34cdde,#eee, #34cdde); 
+}
+
+.gradient .gradient-left-arbit-steps{
+	background : linear-gradient(left,#eee 20%, #34cdde); 	
+	background : -moz-linear-gradient(left,#eee 20%,#34cdde);
+	background : -webkit-gradient(linear,left,right,from(.2, #eee), to(#34cdde));
+	background : -webkit-linear-gradient(left,#eee 20%, #34cdde); 
+}
+
+.gradient .gradient-left-45deg{
+	background: -moz-linear-gradient(left 45deg, #eee, #34cdde);
+	background: -webkit-gradient(linear, 0 100%, 100% 0, from(#eee),to(#34cdde));
+	background: -webkit-linear-gradient(45deg, #eee, #34cdde);
+}
+.gradient .gradient-linear-demo{
+	background: -moz-linear-gradient(left 45deg, rgba(0,0,0,.3) 25%, rgba(0,0,0,0) 25%,
+					rgba(0,0,0,0) 50%, rgba(0,0,0,.3) 50%,
+					rgba(0,0,0,0.3) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0)) #34cdde;
+	background : -webkit-gradient(linear, 0 100%, 100% 0, from(rgba(0,0,0,.3)),
+					 color-stop(.25, rgba(0,0,0,.3)),
+					 color-stop(.25, rgba(0,0,0,0)), 
+					 color-stop(.5, rgba(0,0,0,0)),
+					 color-stop(.5, rgba(0,0,0,.3)),
+					 color-stop(.75, rgba(0,0,0,.3)),
+					 color-stop(.75, rgba(0,0,0,0)), to(rgba(0,0,0,0))) #34cdde;  
+	background: -webkit-linear-gradient(45deg, rgba(0,0,0,.3) 25%, rgba(0,0,0,0) 25%,
+					rgba(0,0,0,0) 50%, rgba(0,0,0,.3) 50%,
+					rgba(0,0,0,0.3) 75%, rgba(0,0,0,0) 75%, rgba(0,0,0,0)) #34cdde;
+}
+
+.gradient .gradient-radial{
+	
+}
+
+.box-shadow{
+	box-shadow : 5px 6px 5px #333;
+}
+
+.box-shadow-inset{
+	box-shadow : 0px 0px 5px #777 inset;
+}
+
+.border-demo{
+	border-radius : 4px;
+	border-color : #34a3ef;
+	box-shadow : 0 0 3px #40b3f4;
 }
