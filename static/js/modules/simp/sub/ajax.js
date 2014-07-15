@@ -18,6 +18,12 @@
 		async : true,
 	};
 	simp.ajax = {
+		get : function(){
+			
+		},
+		post : function(){
+			
+		},
 		request : function(option){
 			var xhr = xhrFactory(),
 				opt = simp.extend({}, defaultOpt, option);
