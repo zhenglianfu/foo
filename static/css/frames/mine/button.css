@@ -1,0 +1,30 @@
+@CHARSET "UTF-8";
+button,input[type='button'],input[type='reset'],input[type='submit'], 
+.button, a.button, a.button:visited,[role~='button']{
+	-webkit-animation-delay: 0;
+	word-wrap: break-word;
+	padding: .25em 1em;
+	background: lightgrey;
+	border: 1px solid #c6c6c6;
+	color: #5a5a5a;
+	font-family: Helvetica,Arial,Geneva,sans-serif;
+	font-weight: 700;
+	text-decoration: none;
+	cursor: pointer;
+	line-height: 1.5;
+	width: auto;
+	height: auto;
+	text-align: center;
+	-webkit-transition: background-color .25s ease-out;
+	transition: background-color .25s ease-out;
+	-o-border-radius: 4px;
+	border-radius: 4px;
+	display : inline-block;
+}
+button:hover,.button:hover,button.on,.button.on,input[type='reset'].on,input[type='reset']:hover,
+input[type='submit'].on,input[type='submit']:hover,a.button.on,a.button:hover,[role='button'].on,
+[role='button']:hover{
+	background : #c6c6c6;
+	color : #616161;
+	text-decoration : none;
+}

@@ -1,0 +1,3 @@
+(function(simp){
+	
+}(window.simp));

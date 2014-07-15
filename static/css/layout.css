@@ -1,0 +1,226 @@
+@CHARSET "UTF-8";
+/* flex */
+.row-wrap {
+	width: 100%;
+	height: 150px;
+	display: flex;
+	display: -webkit-flex;
+	flex-flow: row wrap;
+	-webkit-flex-flow: row nowrap;
+}
+
+.row-wrap>div {
+	border: 1px solid;
+	height: 100%;
+	/* flex 会覆盖float效果，在支持的flex布局的浏览器中嘿嘿				float : left; */
+}
+
+.row-wrap .fixed {
+	width: 100px;
+}
+
+.row-wrap .left {
+	flex: 1;
+	-webkit-flex: 1;
+}
+
+.row-wrap .right {
+	flex: 1;
+	-webkit-flex: 1;
+}
+
+.process-wrap {
+	animation: increase 5s backwards;
+	-webkit-animation: increase 5s backwards;
+	-moz-animation: increase 5s backwards;
+	margin-top: 20px;
+	height: 50px;
+	border-radius: 25px;
+	padding: 3px;
+	background: #fff;
+	verflow: hidden;
+	border: 2px solid #f0f0f0;
+	margin-bottom: 10px;
+}
+
+.process {
+	background: #0078E7;
+	background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.3) 25%,
+		rgba(0, 0, 0, 0) 25%, rgba(0, 0, 0, 0) 50%, rgba(255, 255, 255, 0.3)
+		50%, rgba(255, 255, 255, 0.3) 75%, rgba(0, 0, 0, 0) 75%,
+		rgba(0, 0, 0, 0));
+	background-size: 50px 50px;
+	animation: processbar 3s linear infinite;
+	-moz-animation: processbar 3s linear infinite;
+	-webkit-animation: processbar 3s linear infinite;
+	border: #0078e7;
+	width: 100%;
+	height: 100%;
+	border-radius: 25px;
+}
+
+.anim-paused {
+	animation-play-state: paused;
+}
+
+@keyframes processbar {from { background-position :00;	
+}
+to {
+	background-position: 150px;
+}
+}
+@-moz-keyframes processbar {from { background-position :00;	}
+to {
+	background-position: 150px;
+}
+}
+@-webkit-keyframes processbar {from { background-position :00;
+}
+to {
+	background-position: 150px;
+}
+}
+@keyframes increase {from { width :1%;
+}
+to {
+	width: 99%;
+}
+}
+@-moz-keyframes increase {
+	from { width :1%;	}
+	to {
+		width: 99%;
+	}
+}
+@-webkit-keyframes increase {
+	from { width :1%;}
+	to {
+		width: 99%;
+	}
+}
+/*step nav*/
+.step-nav {
+	margin: 10px 0 15px;
+}
+
+.step-nav .step {
+	float: left;
+	position: relative;
+	width: 25%;
+	border-top: 3px double #ccc;
+	color: #ccc;
+}
+
+.step-nav .step .dot {
+	border: 1px solid #ccc;
+	width: 10px;
+	height: 10px;
+	border-radius: 10px;
+	position: absolute;
+	left: 50%;
+	margin-left: -10px;
+	margin-top: -8px;
+	display: block;
+	background: #fff;
+}
+
+.step-nav .step .dot.num {
+	width: 15px;
+	height: 15px;
+	margin-left: -13px;
+	margin-top: -11px;
+	text-align: center;
+	line-height: 15px;
+	font-size: 12px;
+}
+
+.step-nav .step .title {
+	display: block;
+	margin-top: 8px;
+	text-align: center;
+}
+
+.step-nav .step.visited,.step-nav .step.visited .dot,.step-nav .step.visited .slider
+	{
+	border-color: #41a0fe;
+	color: #41a0fe;
+}
+/*splited steps*/
+.step-nav .split-steps .step {
+	border: 0 none;
+}
+
+.step-nav .split-steps .slider {
+	display: block;
+	margin: 0 1px;
+	border-top: 3px double #ccc;
+}
+/* ad */
+#ad{
+	
+}
+/*page set*/
+.wrap-top,.wrap-header,.wrap-container,.wrap-footer{
+	width : 100%;
+	margin-bottom : 20px;
+}
+/* top nav */
+.wrap-top{
+	width : 100%;
+	background: -moz-linear-gradient(top, #fefefe, #f4f4f4); 
+	/* Safari 4-5, Chrome 1-9 */
+	/* -webkit-gradient(,  [, ]?,  [, ]? [, ]*) */
+	background: -webkit-gradient(linear,top,from(#fefefe),to(#f4f4f4));
+	/* Safari 5.1+, Chrome 10+ */
+	background: -webkit-linear-gradient(top, #fefefe, #f4f4f4);
+	/* Opera 11.10+ */
+	background: -o-linear-gradient(top, #fefefe, #f4f4f4);
+}
+.wrap-top .top-nav{
+	margin : 0 auto;
+	height : 30px;
+	width : 920px;
+	position : relative;
+	overflow:hidden;
+}
+.wrap-top .menu-list li, .wrap-top .menu-ext li{
+	float : left;
+	display:inline;
+}
+.wrap-top .menu-list,.wrap-top .menu-ext{
+	float : left;
+}
+.wrap-top .menu-list,.wrap-top .menu-ext{
+	overflow : hidden;
+}
+.wrap-top .menu-list{
+	width : 620px;
+}
+.wrap-top .menu-ext{
+	width : 290px;
+}
+/*reset link*/
+.wrap-top a,.wrap-top a:link{
+	color : #333;
+	text-decoration : none;
+}
+.wrap-top a:hover{
+	color : #333;
+	text-decoration : none;
+}
+.wrap-top .menu-list li:hover,.wrap-top .menu-ext li:hover{
+	color : #369;
+}
+.wrap-top .menu-list li a,.wrap-top .menu-ext li a{
+	padding : 2px 15px 0;
+	font-size : 16px;
+	line-height:24px;
+	height : 24px;	
+	border-bottom:4px solid transparent;
+}
+.wrap-top li:hover a, .wrap-top li.current a{
+	color : #369;
+	border-bottom : 4px solid #369;
+}
+/*end of top nav*/
+/* header */
