@@ -103,7 +103,34 @@
 	var graphic = function(){
 		
 	}();
+	var Canvas = function Canvas(){
+		
+	}
+	Canvas.prototype = {
+			get2D : function(){
+				return this[0] && this[0].getContext ? this[0].getContext("2d") : null;
+			},
+			get3D : function(){
+				return this[0] && this[0].getContext ? this[0].getContext("3d") : null;
+			},
+			setStyle : function(){
+				
+			},
+			chart : function(){
+				
+			},
+			clear : function(){
+				if (this[0] == null) {
+					return this;
+				}
+				var width = this[0].width || this[0].clientWidth;
+				this[0].width = width;
+			}
+	};
 	
+	var CanvasChart = function CanvasChart(){
+		
+	}
 	window.select = select;
-	
+	window.canvas = canvas;
 })(window);
