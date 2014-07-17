@@ -6,17 +6,26 @@
  */
 (function(window){
 	var sim = window.simp || {},
-	Selector = function(str){
+	doc = window.document,
+	rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
+	Selector = function(str, context){
 		
 	},
-	_ = function _(nodes){
-			if (!(this instanceof nodes)) {
-				return new _(arguments);
-			}
-			nodes = nodes || [];
-			
+	isRoot = function(node){
+		return node === window || node === doc || node === doc.body;
+	},
+	Node = function Node(nodes){
+		var i, len; 
+		if (!(this instanceof nodes)) {
+			return new Node(arguments);
+		}
+		nodes = nodes || [];
+		for (i = 0, len = nodes.length; i < len; i ++) {
+			this[i] = nodes[i];
+		}
+		this.length = len;
 	};
-	_.prototype = {
+	Node.prototype = {
 			size : function(){
 				return this.length;
 			},
@@ -112,9 +121,9 @@
 				
 			}
 	};
-	_.find = function(){
-		return _(Selector(arguments));
+	Node.find = function(){
+		return Node(Selector(arguments));
 	};
-	sim.dom = _;
+	sim.dom = Node;
 	window.simp = sim;
 }(window));
