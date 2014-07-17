@@ -63,7 +63,7 @@
 					if (e == null){
 						return e + "";
 					}
-					return typeof e === "object" ? class2type[type] || "object" : typeof e;
+					return typeof e === "object" ? class2type[core_toString.apply(e)] || "object" : typeof e;
 				}
 	};
     simply.extend({
@@ -114,6 +114,9 @@
     			rets.push(ret);
     		}
     	}
+    });
+    simply.each("Number|Array|Object|Function|Null|Undefined|Date|RegExp|String".split("|"), function(e){
+    	class2type["[object " + e + "]"] = e.toLowerCase(); 
     });
 	window.simp = simply;
 }(window));
