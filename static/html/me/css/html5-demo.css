@@ -11,3 +11,47 @@
 	width : 100%;
 	height : 200px;
 }
+
+.video-wrap, .video-wrap .processer{
+	position : relative;
+}
+.video-ctrl{
+	bottom : 0;
+	position: absolute;
+	width : 100%;
+	background : #000;
+	opacity : .9;
+	padding : 10px 0; 
+}
+.video-ctrl .processer{
+	border : 10px solid #333;
+	border-width : 10px 0;
+	background : #999;
+}
+.ctrl-menu {
+	clear : both;
+	position : relative;
+}
+.ctrl-menu:after, .ctrl-menu:before{
+	clear : both;
+	overflow : hidde;
+	content : "";
+	visibility : hidden;
+	display: block;
+}
+.video-ctrl .process-line{
+	background : #093;
+	height : 5px;
+	width : 50%;
+}
+.video-ctrl .process-block{
+	position : absolute;
+	width : 15px;
+	height : 15px;
+	background : #073;
+	border : 2px solid #073;
+	box-shadow: 0 0 1px #083;
+	left : 50%;
+	top : -5px;
+	border-radius : 10px;
+}
