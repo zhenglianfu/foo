@@ -28,6 +28,9 @@
 	border-width : 10px 0;
 	background : #999;
 }
+.video-ctrl .processer:hover .process-line{
+	background : #093;
+}
 .ctrl-menu {
 	clear : both;
 	position : relative;
@@ -40,7 +43,7 @@
 	display: block;
 }
 .video-ctrl .process-line{
-	background : #093;
+	background : #073;
 	height : 5px;
 	width : 50%;
 }
