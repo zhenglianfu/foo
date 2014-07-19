@@ -27,6 +27,7 @@
 	border : 10px solid #333;
 	border-width : 10px 0;
 	background : #999;
+	cursor : pointer;
 }
 .video-ctrl .processer:hover .process-line{
 	background : #093;
