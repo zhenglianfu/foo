@@ -11,7 +11,11 @@
 	width : 100%;
 	height : 200px;
 }
-
+.transition{
+	transition: all .3s;
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+}
 .video-wrap, .video-wrap .processer{
 	position : relative;
 }
@@ -21,14 +25,18 @@
 	width : 100%;
 	background : #000;
 	opacity : .9;
-	padding : 10px 0; 
+	padding : 10px 50px 10px 90px; 
 }
 .video-ctrl .processer{
-	border : 10px solid #333;
+	border : 10px solid #000;
 	border-width : 10px 0;
 	background : #999;
 	cursor : pointer;
 }
+.video-ctrl .processer:hover{
+	background : #ccc;	
+}
+
 .video-ctrl .processer:hover .process-line{
 	background : #093;
 }
@@ -50,12 +58,29 @@
 }
 .video-ctrl .process-block{
 	position : absolute;
-	width : 15px;
+	width : 10px;
 	height : 15px;
-	background : #073;
-	border : 2px solid #073;
-	box-shadow: 0 0 1px #083;
+	background : #aaa;
+	border : 1px solid #777;
+	box-shadow: 0 0 1px #333;
 	left : 50%;
 	top : -5px;
-	border-radius : 10px;
+}
+
+.video-ctrl .process-block:hover{
+	background : #ddd;
+	border-color : #999;
+	box-shadow : 0 0 1px #777;
+}
+.video-ctrl .vol-ctrl{
+	position: absolute;
+	right : -30px;
+	top : 2px;
+}
+.vol-ctrl a, .vol-ctrl a:visited{
+	color : #aaa;
+	cursor : pointer;
+}
+.vol-ctrl a:hover{
+	color : #ddd;
 }
