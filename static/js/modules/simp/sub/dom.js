@@ -14,16 +14,20 @@
 	isRoot = function(node){
 		return node === window || node === doc || node === doc.body;
 	},
+	// nodes must be array like
 	Node = function Node(nodes){
-		var i, len; 
+		var i, len, count = 0; 
 		if (!(this instanceof nodes)) {
 			return new Node(arguments);
 		}
 		nodes = nodes || [];
 		for (i = 0, len = nodes.length; i < len; i ++) {
-			this[i] = nodes[i];
+			if (nodes[i] != null) {
+				this[count] = nodes[i];
+				count ++;
+			}
 		}
-		this.length = len;
+		this.length = count;
 	};
 	Node.prototype = {
 			size : function(){
@@ -70,28 +74,38 @@
 				
 			},
 			first : function(){
-				
+				return Node([this[0]]);
 			},
 			firstChild : function(){
 				
 			},
 			last : function(){
-				
+				return Node([this[this.length - 1]]);
 			},
 			lastChild : function() {
 				
 			},
 			offset : function(){
-				
+				var top = 0, left = 0;
+				return {
+					top : top,
+					left : left
+				};
 			},
-			width : function(){
-				
+			width : function(w){
+				if (w === undefined) {
+					return this.outWidth();
+				}
+				return this;
 			},
 			outWidth : function(){
 				
 			},
-			height : function(){
-				
+			height : function(h){
+				if (h === undefined) {
+					return this.outHeight();
+				}
+				return this;
 			},
 			outHeight : function(){
 				
