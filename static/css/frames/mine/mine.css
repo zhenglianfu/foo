@@ -1637,7 +1637,7 @@ a [class^=icon-], a [class*=' icon-']{
 	content: "\f18b"
 }
 
-/*** font-color & bg-color ***/
+/*** font-color & bg-color & border-color ***/
 .success{
 	color: #468847; 
 }
@@ -1764,6 +1764,64 @@ a [class^=icon-], a [class*=' icon-']{
 .question-bg {
     background: none repeat scroll 0 0 #f0e6f4;
     color: #9855b4;
+}
+/* border color of box */
+.box.green-bg, .box.green-border{
+	border-color : #2ecc71;
+}
+.box.blue-bg, .box.blue-border{
+	border-color : #3498db;
+}
+.box.purple-bg, .box.purple-border{
+	border-color : #9b59b6;
+}
+.box.yellow-bg, .box.yellow-border{
+	border-color : #f1c40f;
+}
+.box.orange-bg, .box.orange-border{
+	border-color : #e67e22;
+}
+.box.red-bg, .box.red-border{
+	border-color : #e74c3c;
+}
+.box.pink-bg, .box.pink-border{
+	border-color : #f02475;
+}
+.box.turquoise-bg, .box.turquoise-border{
+	border-color : #1abc9c;
+}
+.box.asphalt-bg, .box.asphalt-border{
+	border-color : #34495e;
+}
+.box.charcoal-bg, .box.charcoal-border{
+	border-color : #383636;
+}
+.box.white-bg, .box.white-border{
+	border-color : #fff;
+}
+.box.black-bg, .box.black-border{
+	border-color : #111;
+}
+.box.info-bg, .box.info-border{
+	border-color : #d9edf7;
+}
+.box.alert-bg, .box.alert-border{
+	border-color : #fcf8e3;
+}
+.box.warning-bg, .box.warning-border{
+	border-color : #ffe5c7;
+}
+.box.error-bg, .box.error-border{
+	border-color : #f2dede;
+}
+.box.success-bg, .box.success-border{
+	border-color : #dff0d8;
+}
+.box.question-bg, .box.question-border{
+	border-color : #f0e6f4;
+}
+.box.default-border{
+	border-color : #ccc;
 }
 
 /* type-link */
@@ -1903,12 +1961,6 @@ input[type=button].asphalt, a.button.asphalt{
 	color : #fff; 
 }	
 /**** animation ****/
-.transition{
-	transition: all .3s;
-	-webkit-transition: all .3s;
-	-moz-transition: all .3s;
-}
-
 .animation{
 	animation-duration : 1s;
 	-webkit-animation-duration : 1s;
@@ -3990,7 +4042,6 @@ input[type=button].asphalt, a.button.asphalt{
 .page{
 	width: 100%;
 	height : 100%;
-	min-width : 980px;
 	display: block;
 	position : relative;
 }
@@ -4005,8 +4056,6 @@ input[type=button].asphalt, a.button.asphalt{
 	display : block;
 	width : 100%;
 	width : auto;
-	min-width : 980px;
-	max-width : 1800px;
 	margin-bottom: 20px;
 }
 .header .nav{
@@ -4489,6 +4538,30 @@ input[type="date"], input[type="number"], input[type="tel"], input[type="passwor
 .gap-right{
 	margin-right: 10px;
 }
+.double-gap-bottom{
+	margin-bottom : 20px;
+}
+.double-gap-top{
+	margin-top: 20px;
+}
+.double-gap-left{
+	margin-left: 20px;
+}
+.double-gap-right{
+	margin-right: 20px;
+}
+.triple-gap-bottom{
+	margin-bottom : 30px;
+}
+.triple-gap-top{
+	margin-top: 30px;
+}
+.triple-gap-left{
+	margin-left: 30px;
+}
+.triple-gap-right{
+	margin-right: 30px;
+}
 .offset {
 	margin: -10px;
 }
@@ -4879,7 +4952,30 @@ input[type="date"], input[type="number"], input[type="tel"], input[type="passwor
 .no-transition {
 	transition: none !important;
 }
+/* other */
+.cursor-point{
+	cursor: pointer;
+}
 
+.cursor-move{
+	cursor: move;
+}
+
+.cursor-cross{
+	cursor: crosshair;
+}
+
+.cursor-text{
+	cursor: text;
+}
+
+.cursor-help{
+	cursor : help;
+}
+
+.cursor-wait{
+	cursor : wait;
+}
 /* for mobile or tablet*/
 @media (max-width: 767px){
 	/* fill the whole row*/
@@ -4908,5 +5004,7 @@ input[type="date"], input[type="number"], input[type="tel"], input[type="passwor
 		clear: both;
 	    float: none;
 	    width: 100% !important;
-	}	
+	}
+	/* nav set */
+		
 }
