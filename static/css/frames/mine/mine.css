@@ -1903,6 +1903,12 @@ input[type=button].asphalt, a.button.asphalt{
 	color : #fff; 
 }	
 /**** animation ****/
+.transition{
+	transition: all .3s;
+	-webkit-transition: all .3s;
+	-moz-transition: all .3s;
+}
+
 .animation{
 	animation-duration : 1s;
 	-webkit-animation-duration : 1s;
