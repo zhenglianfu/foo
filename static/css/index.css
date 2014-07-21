@@ -1,14 +1,14 @@
 @CHARSET="UTF-8";
 .orange-bg:hover{
 	background : #f68822;
-	animation : flipInX 1s;
-	-webkit-animation : flipInX 1s;
+	animation : fadeInLeft 1s;
+	-webkit-animation : fadeInLeft 1s;
 }
 
 .blue-bg:hover{
 	background : #38b8e0;
-	animation : flipInY 1s;
-	-webkit-animation : flipInY 1s;
+	animation : fadeInLeft 1s;
+	-webkit-animation : fadeInLeft 1s;
 }
 
 .turquoise-bg:hover{
@@ -19,8 +19,8 @@
 
 .asphalt-bg:hover{
 	background : #586080;
-	animation : bounceIn 1s;
-	-webkit-animation : bounceIn 1s;
+	animation : fadeInRight 1s;
+	-webkit-animation : fadeInRight 1s;
 }
 
 .purple-bg:hover{
@@ -31,6 +31,6 @@
 
 .charcoal-bg:hover{
 	background : #484646;
-	animation : bounceIn 1s;
-	-webkit-animation : bounceIn 1s;
+	animation : fadeInRight 1s;
+	-webkit-animation : fadeInRight 1s;
 }
