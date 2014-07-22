@@ -4,17 +4,20 @@
  * @version 1.0
  */
 (function(window){
-	var _sim = window.simp,
+		var _sim = window.simp,
+			doc = window.document,
 			version = "1.0",
+			rtrim = /^\s+|\s+$/g, 
 			class2type = {},
-			modules = ["dom", "ajax"],
+			modules = ["dom", "ajax", "event"],
+			modulesCache = {},
 			core_toString = class2type.toString,
 			core_hasOwn = class2type.hasOwnProperty,
 			core_slice = modules.slice,
 			default_url = function(){
 				var scripts = document.getElementsByTagName("script"),
 					   src = scripts[scripts.length - 1].src;
-				return src.substr(0, src.lastIndexOf("/") + 1) ;
+				return src.substr(0, src.lastIndexOf("/")) + "/modules/";
 			}(),
 			simply = {
 				extend : function(){
@@ -58,17 +61,108 @@
 							}
 						}
 					}
-				},
-				type : function(e){
-					if (e == null){
-						return e + "";
-					}
-					return typeof e === "object" ? class2type[core_toString.apply(e)] || "object" : typeof e;
+					return target;
 				}
 	};
     simply.extend({
+    	defaultURI : default_url,
+    	setDefaultURI : function(uri){
+    		if (typeof uri === "string") {
+    			simply.defaultURI = uri;
+    			default_url = uri;
+    		} 
+    	},
+    	addModule : function(name){
+    		if (modules.indexOf(name) === -1) {
+    			modules.push(name);
+    		} 
+    	},
+    	setModules : function(m){
+    		if (simply.isArray) {
+    			modules = m;
+    		} else {
+    			throw {
+    				name : "invildate argument",
+    				message : "must be an array"
+    			};
+    		}
+    	},
+    	foo : function(){},
+    	ready : function(fn){
+    		if (doc.readyState === 'complete') {
+    			fn && fn();
+    		} else {
+    			setTimeout(function(){
+    				simply.ready(fn);
+    			}, 300);
+    		}
+    	},
+		type : function(e){
+			if (e == null){
+				return e + "";
+			}
+			return typeof e === "object" ? class2type[core_toString.apply(e)] || "object" : typeof e;
+		},
     	require : function(m_name, uri, callback){
-			
+			var names = (m_name + "").split(","), i, len, name, errors = [], scripts = [], data = {};
+			if (simply.isFunction(uri)) {
+				callback = uri;
+				uri = default_url;
+			}
+			uri = simply.trim(uri);
+			for (i = 0, len = names.length; i < len; i++) {
+				name = simply.trim(names[i]);
+				if (modules.indexOf(name) >= 0) {
+					if (modulesCache[name] === undefined) {
+						scripts.push(insertScriptNode(uri, name));
+					} else {
+						(data[name] = modulesCache[name]);
+					}
+				} else {
+					errors.push({
+						message : "the module " + name + " is not existed or is not supported" 
+					});
+				}
+			}
+			if (scripts.length === 0) {
+				callback && callback(data, errrors); 
+			} else {
+				simply.defer(function(){
+					var ready = true, i = 0, len = scripts.length, name;
+					for (; i < len; i++) {
+						name = scripts[i].modulename;
+						if (scripts[i].error === true) {
+							errors.push({
+								message : "the request url '" + scripts[i].src + "' is incorrect"
+							});
+						} else if (scripts[i].ready === true) {
+							if (modulesCache[name] === undefined) {
+								modulesCache[name] = simply[name];
+								data[name] = simply[name];
+							}
+						} else {
+							ready = false;
+						}
+					}
+					return ready;
+				}, function(){
+					callback && callback(data, errors);
+				});
+			}
+		},
+		// 50ms per time
+		defer : function(cond, fn, timeout){
+			var time = timeout === undefined ? -1 : timeout; 
+			if (cond === true || (simply.isFunction(cond) && cond())) {
+				fn && fn();
+			} else if (time < 0 || !((time - 50) < 0)) {
+				setTimeout(function(){
+					simply.defer(cond, fn, time - 50);
+				}, 50)
+			}
+		},
+		trim : function(s){
+			return (s + "").replace(rtrim, "");
 		},
 		isWindow : function(win){
 			//weak
@@ -77,7 +171,7 @@
     	isFunction : function(f){
 			return typeof f === "function";
 		},
-    	isArray : Array.isArray || function(e){
+    	isArray : (Array.isArray && Array.isArray([]) === true && Array.isArray({}) === false) ? Array.isArray :  function(e){
 			return simply.type(e) === "array";
 		},
 		isNumber : function(n){
@@ -97,7 +191,13 @@
 			if (!obj || simply.type(obj) !== "object" || obj.nodeType || simply.isWindow( obj )) {
 				return false;
 			}
-			return 
+			// filter the objects created by new, except new Object()
+			if (obj.constructor && !core_hasOwn.call(obj.constructor.prototype, "hasOwnProperty")) {
+				return false;
+			}
+			var key;
+			for (key in obj) {}
+			return key === undefined || core_hasOwn.call(obj, key);  
 		},
     	each : function(arr, fun){
     		var i ,len;
@@ -110,13 +210,39 @@
     	map : function(arr, fun){
     		var rets = [], i, len, ret;
     		for (i = 0, len = arr.length; i < len; i++) {
-    			ret = simply.isFunction(fun) ? fun(arr[i]) : fun;
+    			ret = simply.isFunction(fun) ? fun(arr[i], i) : fun;
     			rets.push(ret);
     		}
+    		return rets;
     	}
     });
     simply.each("Number|Array|Object|Function|Null|Undefined|Date|RegExp|String".split("|"), function(e){
     	class2type["[object " + e + "]"] = e.toLowerCase(); 
     });
 	window.simp = simply;
+	/* tool functions */
+	function insertScriptNode(uri, name){
+    	var script = doc.createElement("script"),
+    		source;
+    	//set src
+    	if (uri.indexOf(".js") > 0 || uri.indexOf("?") > 0) {
+    		source = uri;
+    	} else if (uri[uri.length - 1] === "/"){
+    		source = uri + name + ".js";
+    	} else {
+    		source = uri + "/" + name + ".js";
+    	}
+    	script.onload = function(){
+    		script.ready = true;
+    	};
+    	script.onerror = function(){
+    		script.ready = true;
+    		script.error = true;
+    	}
+    	script.modulename = name;
+    	script.type = "text/javascript";
+    	script.src = source;
+    	doc.body.appendChild(script);
+    	return script;
+	}
 }(window));
