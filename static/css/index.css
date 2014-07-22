@@ -1,36 +1,49 @@
 @CHARSET="UTF-8";
+
+/*reset duration*/
+.transition{
+	-webkit-transition : all ease .3s;
+	-moz-transition : all ease .3s;
+	transition : all ease .3s;
+}
 .orange-bg:hover{
 	background : #f68822;
-	animation : fadeInLeft 1s;
-	-webkit-animation : fadeInLeft 1s;
+	transform : scale(.95);
+	-webkit-transform : scale(.95);
+	-moz-transform : scale(.95);
 }
 
 .blue-bg:hover{
 	background : #38b8e0;
-	animation : fadeInLeft 1s;
-	-webkit-animation : fadeInLeft 1s;
+	transform : scale(.95);
+	-webkit-transform : scale(.95);
+	-moz-transform : scale(.95);
 }
 
 .turquoise-bg:hover{
 	background : #22d090;
-	animation : fadeInDown 1s;
-	-webkit-animation : fadeInDown 1s;
+	transform : scale(.95);
+	-webkit-transform : scale(.95);
+	-moz-transform : scale(.95);
 }
 
 .asphalt-bg:hover{
 	background : #586080;
-	animation : fadeInRight 1s;
-	-webkit-animation : fadeInRight 1s;
+	transform : scale(.95);
+	-webkit-transform : scale(.95);
+	-moz-transform : scale(.95);
 }
 
 .purple-bg:hover{
 	background : #dd50dd;
-	animation : fadeInUp 1s;
-	-webkit-animation : fadeInUp 1s;
+	transform : scale(.95);
+	-webkit-transform : scale(.95);
+	-moz-transform : scale(.95);
 }
 
 .charcoal-bg:hover{
 	background : #484646;
-	animation : fadeInRight 1s;
-	-webkit-animation : fadeInRight 1s;
+	transform : scale(.95);
+	-webkit-transform : scale(.95);
+	-moz-transform : scale(.95);
 }
