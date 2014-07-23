@@ -6,44 +6,89 @@
 	-moz-transition : all ease .3s;
 	transition : all ease .3s;
 }
+.container .box.cursor-point:hover{
+	transform : scale(.95);
+	-webkit-transform : scale(.95);
+	-moz-transform : scale(.95);
+} 
 .orange-bg:hover{
 	background : #f68822;
-	transform : scale(.95);
-	-webkit-transform : scale(.95);
-	-moz-transform : scale(.95);
 }
-
 .blue-bg:hover{
 	background : #38b8e0;
-	transform : scale(.95);
-	-webkit-transform : scale(.95);
-	-moz-transform : scale(.95);
 }
 
 .turquoise-bg:hover{
 	background : #22d090;
-	transform : scale(.95);
-	-webkit-transform : scale(.95);
-	-moz-transform : scale(.95);
 }
 
 .asphalt-bg:hover{
 	background : #586080;
-	transform : scale(.95);
-	-webkit-transform : scale(.95);
-	-moz-transform : scale(.95);
 }
 
 .purple-bg:hover{
 	background : #dd50dd;
-	transform : scale(.95);
-	-webkit-transform : scale(.95);
-	-moz-transform : scale(.95);
 }
 
 .charcoal-bg:hover{
 	background : #484646;
-	transform : scale(.95);
-	-webkit-transform : scale(.95);
-	-moz-transform : scale(.95);
+}
+.container .start{
+	-webkit-animation : borderShine 4s infinite both;
+	-moz-animation : borderShine 4s infinite both;
+	animation : borderShine 4s infinite both;
+}
+
+.container .start:hover{
+	-webkit-animation-duration : 1s;
+	-moz-animation-duration : 1s;
+	animation-duration : 1s;
+}
+
+@keyframes borderShine{
+	0%{
+		-webkit-box-shadow : 0 0 1px #3480ef;
+		-moz-box-shadow : 0 0 1px #3480ef;
+		box-shadow : 0 0 1px #3480ef;
+	}
+	50%{
+		-webkit-box-shadow : 0 0 20px #3480ef;
+		-moz-box-shadow : 0 0 20px #3480ef;
+		box-shadow : 0 0 20px #3480ef;
+	}
+	100%{
+		-webkit-box-shadow : 0 0 1px #3480ef;
+		-moz-box-shadow : 0 0 1px #3480ef;
+		box-shadow : 0 0 1px #3480ef;
+	}
+}
+
+@-webkit-keyframes borderShine{
+	0%{
+		-webkit-box-shadow : 0 0 1px #3480ef;
+		box-shadow : 0 0 1px #3480ef;
+	}
+	50%{
+		-webkit-box-shadow : 0 0 1px #3480ef;
+		box-shadow : 0 0 20px #3480ef;
+	}
+	100%{
+		-webkit-box-shadow : 0 0 1px #3480ef;
+		box-shadow : 0 0 1px #3480ef;
+	}
+}
+
+@-moz-keyframes borderShine{
+	0%{
+		-moz-box-shadow : 0 0 1px #3480ef;
+		box-shadow : 0 0 1px #3480ef;
+	}
+	50%{
+		-moz-box-shadow : 0 0 1px #3480ef;
+		box-shadow : 0 0 20px #3480ef;
+	}
+	100%{
+		-moz-box-shadow : 0 0 1px #3480ef;
+		box-shadow : 0 0 1px #3480ef;
+	}
 }
