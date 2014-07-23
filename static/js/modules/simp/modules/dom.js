@@ -6,6 +6,7 @@
  */
 (function(window){
 	var sim = window.simp || {},
+	ELE_TYPE = 1,
 	doc = window.document,
 	rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
 	Selector = function(str, context){
@@ -16,18 +17,25 @@
 	},
 	// nodes must be array like
 	Node = function Node(nodes){
-		var i, len, count = 0; 
+		var i, len, count = 0, isCollection = false; 
 		if (!(this instanceof Node)) {
-			return new Node(arguments);
+			return new Node(nodes);
 		}
 		nodes = nodes || [];
-		for (i = 0, len = nodes.length; i < len; i ++) {
-			if (nodes[i] != null) {
-				this[count] = nodes[i];
-				count ++;
+		isCollection = nodes.length !== undefined && nodes.nodeType !== ELE_TYPE ? true : false;
+		this.length = 0;
+		if (isCollection) {
+			for (i = 0, len = nodes.length; i < len; i ++) {
+				if (nodes[i] != null) {
+					this[count] = nodes[i];
+					count ++;
+				}
 			}
+			this.length = count;
+		} else if (nodes) {
+			 this.length = 1;
+			 this[0] = 0; 
 		}
-		this.length = count;
 	};
 	Node.prototype = {
 			size : function(){
@@ -42,6 +50,9 @@
 			},
 			addClass : function(clazz){
 				return this;
+			},
+			hasClass : function(){
+				return false;
 			},
 			removeClass : function(clazz){
 				return this;
@@ -65,13 +76,26 @@
 				
 			},
 			parent : function(){
-				
+				var i = 0, len = this.length, nodes = [];
+				for (; i < len; i++) {
+					this[i] && this[i].parentNode && nodes.push(this[i].parentNode)
+				}
+				return Node(nodes);
 			},
 			parents : function(p){
 				
 			},
 			children : function(){
-				
+				var i = 0, len = this.length, nodes = [], j, c, children;
+				for (; i < len; i++) {
+					if (this[i]) {
+						children = this[i].children; 
+						for (j = 0, c = children.length; j < c; j++) {
+							nodes.push(children[j]);
+						}
+					}
+				}
+				return Node(nodes);
 			},
 			first : function(){
 				return Node([this[0]]);
@@ -86,11 +110,27 @@
 				
 			},
 			offset : function(){
-				var top = 0, left = 0;
+				var top = 0, left = 0, p;
+				if (this[0]) {
+					top = this[0].offsetTop;
+					left = this[0].offsetLeft;
+					p = this[0];
+					while((p = p.offsetParent) !== null){
+						top += p.offsetTop;
+						left += p.offsetLeft;
+					}
+				}
 				return {
 					top : top,
 					left : left
 				};
+			},
+			offsetParent : function(){
+				var i = 0, len = this.length, nodes = [];
+				for (; i < len; i++) {
+					this[i] && this[i].offsetParent && nodes.push(this[i].offsetParent);
+				}
+				return Node(nodes);
 			},
 			width : function(w){
 				if (w === undefined) {
@@ -99,7 +139,7 @@
 				return this;
 			},
 			outWidth : function(){
-				
+				return (this[0] && this[0].offsetWidth) || 0;
 			},
 			height : function(h){
 				if (h === undefined) {
@@ -108,36 +148,43 @@
 				return this;
 			},
 			outHeight : function(){
-				
+				return (this[0] && this[0].offsetHeight) || 0; 
 			},
 			show : function(){
-				
+				return this;
 			},
 			hide : function(){
-				
+				return this;
 			},
 			hasClass : function(clazz){
-				
+				return false;
 			},
 			is : function(){
-				
+				return false;
 			},
-			html : function(){
-				
+			html : function(html){
+				return this;
 			},
-			text : function(){
-				
+			text : function(text){
+				return this;
 			},
-			attr : function(){
-				
+			attr : function(k, v){
+				return this;
 			},
-			data : function(){
-				
+			hasAttr : function(k){
+				return false;
+			},
+			removeAttr : function(k){
+				return this;
+			},
+			data : function(k, d){
+				return this;
 			}
 	};
-	Node.find = function(){
+	sim.dom = function(){
 		return Node(Selector(arguments));
-	};
+	}
+	// for test
 	sim.dom = Node;
 	window.simp = sim;
 }(window));
