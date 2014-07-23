@@ -138,8 +138,8 @@
 						} else if (scripts[i].ready === true) {
 							if (modulesCache[name] === undefined) {
 								modulesCache[name] = simply[name];
-								data[name] = simply[name];
 							}
+							data[name] = simply[name];
 						} else {
 							ready = false;
 						}
@@ -228,9 +228,9 @@
     	if (uri.indexOf(".js") > 0 || uri.indexOf("?") > 0) {
     		source = uri;
     	} else if (uri[uri.length - 1] === "/"){
-    		source = uri + name + ".js";
+    		source = uri + name + ".js?version=1.0";
     	} else {
-    		source = uri + "/" + name + ".js";
+    		source = uri + "/" + name + ".js?version=1.0";
     	}
     	script.onload = function(){
     		script.ready = true;
