@@ -17,7 +17,7 @@
 	// nodes must be array like
 	Node = function Node(nodes){
 		var i, len, count = 0; 
-		if (!(this instanceof nodes)) {
+		if (!(this instanceof Node)) {
 			return new Node(arguments);
 		}
 		nodes = nodes || [];
