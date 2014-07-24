@@ -105,6 +105,7 @@
 		},
     	require : function(m_name, uri, callback){
 			var names = (m_name + "").split(","), i, len, name, errors = [], scripts = [], data = {};
+			uri = uri || default_url;
 			if (simply.isFunction(uri)) {
 				callback = uri;
 				uri = default_url;
