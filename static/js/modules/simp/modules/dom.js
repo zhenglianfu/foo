@@ -9,6 +9,7 @@
 	ELE_TYPE = 1,
 	doc = window.document,
 	rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
+	// ie6,7,8 don't support getElementsByClassName
 	Selector = function(str, context){
 		
 	},
@@ -26,7 +27,7 @@
 		this.length = 0;
 		if (isCollection) {
 			for (i = 0, len = nodes.length; i < len; i ++) {
-				if (nodes[i] != null) {
+				if (nodes[i] != null && nodes[i].nodeType === 1) {
 					this[count] = nodes[i];
 					count ++;
 				}
@@ -179,12 +180,29 @@
 			},
 			data : function(k, d){
 				return this;
+			},
+			find : function(selector){
+				return Node(Selector(selector, this));
 			}
 	};
-	sim.dom = function(){
-		return Node(Selector(arguments));
-	}
-	// for test
+	sim.dom = function(s, context){
+		if (s == null || sim.trim(s) === "") {
+			return Node();
+		} else if (typeof s === "string") {
+			// is tag create?
+			
+		} else if (s.nodeType === 1) {
+			return Node([s]);
+		} else if (s.length) {
+			return Node(s);
+		}
+	};
+
+	/**
+	 *  for test 
+	 *  TODO delete it later;
+	 * */
+	//TODO delete it later;
 	sim.dom = Node;
 	window.simp = sim;
 }(window));
