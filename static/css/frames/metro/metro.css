@@ -1,0 +1,79 @@
+@CHARSET "UTF-8";
+
+*, *:after, *:before{
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html,body,div,span,header,footer,nav,aside,menu,main,section,article,details,h1,h2,h3,h4,h5,h6,p,ol,ul,li,dl,dd,dt,em,small,big,
+strong,b,u,i,sub,sup,del,strike,q,blockquote,cite,time,address,code,pre,a,img,center,hr,from,fieldset,legend,label,input,textarea,
+select,button,table,caption,tbody,thead,tfoot,tr,td,th,iframe,object,canvas,audio,video,embed {
+	padding : 0;
+	margin : 0;
+	border: 0;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+ul,ol{
+	list-style-type : none;
+}
+
+.clearfix{
+ 	clear : both;
+}
+
+.clearfix:after, .clearfix:before{
+	clear : both;
+	display : block;
+	content : "";
+	overflow : hidden;
+	visibility : hidden;
+}
+
+.center{
+	display : block;
+	margin : 0 auto;
+}
+/* padded margin*/
+.padded{
+	padding : 10px;	
+}
+/* block set */
+.tall{
+	height : 100%;
+}
+
+/* window */
+.window, .window.default{
+	position : relative;
+	border : 10px solid #34a0ee;
+	border-width : 25px 8px 8px;
+}
+
+.window .win-ctrl{
+	position : absolute;
+	top : -25px;
+	right : 0px;
+}
+
+.win-ctrl li{
+	display : inline-block;
+	float : left;
+	height : 20px;
+	width : 20px;
+	margin-left : 1px;
+}
+
+.win-ctrl li:hover{
+	background : #2b5797;
+}
+
+.win-ctrl .close{
+	width : 40px;
+	background : #bb0917;
+}
+.win-ctrl .close:hover{
+	background : #d00917;
+}
