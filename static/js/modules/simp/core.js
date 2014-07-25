@@ -19,6 +19,7 @@
 					   src = scripts[scripts.length - 1].src;
 				return src.substr(0, src.lastIndexOf("/")) + "/modules/";
 			}(),
+			agent = window.navigator.userAgent,
 			simply = {
 				extend : function(){
 					var src, copyIsArray, copy, name, options, clone,
@@ -66,6 +67,23 @@
 	};
     simply.extend({
     	defaultURI : default_url,
+    	isIE : function(){
+    		
+    	}(),
+    	gtIE8 : function(){
+    		
+    	}(),
+    	isFireFox : function(){
+    		var p = /Firefox\/([\d\.]+)/i,
+    			m = agent.match(p);
+    		if (m && m.length) {
+    			return m[1];
+    		}
+    		return false;
+    	}(),
+    	isChrome : function(){
+    		
+    	}(),
     	setDefaultURI : function(uri){
     		if (typeof uri === "string") {
     			simply.defaultURI = uri;
@@ -103,6 +121,16 @@
 			}
 			return typeof e === "object" ? class2type[core_toString.apply(e)] || "object" : typeof e;
 		},
+		removeModule : function(name){
+			var names = (name + "").split(","),
+				i = 0, len = names.length, t;
+			for (; i < len; i++) {
+				t = simply.trim(names[i]);
+				if (modules.indexOf(t) > -1) {
+					simply[names[i]] = undefined;
+				}
+			}
+		},
     	require : function(m_name, uri, callback){
 			var names = (m_name + "").split(","), i, len, name, errors = [], scripts = [], data = {};
 			uri = uri || default_url;
@@ -126,7 +154,7 @@
 				}
 			}
 			if (scripts.length === 0) {
-				callback && callback(data, errrors); 
+				callback && callback(data, errors); 
 			} else {
 				simply.defer(function(){
 					var ready = true, i = 0, len = scripts.length, name;
@@ -246,4 +274,19 @@
     	doc.body.appendChild(script);
     	return script;
 	}
+	//for ie6,7,8
+	(function(){
+		if (Array.prototype.indexOf === undefined) {
+			Array.prototype.indexOf = function(e){
+				var index = -1, i = 0;
+				for (; i < this.length; i ++) {
+					if (e === this[i]) {
+						index = i;
+						break;
+					}
+				}
+				return index;
+			}
+		}
+	}());
 }(window));
