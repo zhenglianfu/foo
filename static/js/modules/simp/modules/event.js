@@ -6,6 +6,9 @@
 	var simp = window.simp || {},
 		doc = window.document,
 		dom, Event, div;
+	function isHTMLElement(node){
+		return node.nodeType === 1;
+	}
 	simp.require("dom", function(data, errors){
 		dom = data.dom;
 		div = dom("<div>");
@@ -19,10 +22,22 @@
 		Event.prototype = {
 				stop : function(){},
 		};
-
+		var EventTool = {
+			addEvent : function(){
+				
+			},
+			
+		};
 		simp.event = {
-				on : function(){
-					
+				on : function(node, type, selector, fn){
+					var i, len;
+					if (typeof selector === "function") {
+						fn = selector;
+						selector = "*";
+					}
+					if (isHTMLElement(node)) {
+						
+					}
 				},
 		};
 		window.simp = simp;
