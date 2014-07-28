@@ -8,11 +8,73 @@
 	var sim = window.simp || {},
 	ELE_TYPE = 1,
 	doc = window.document,
-	rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
+	tag = /^<([a-zA-Z0-9]+)>(.*)/;
 	// ie6,7,8 don't support getElementsByClassName
-	Selector = function(str, context){
-		
-	},
+	Selector = function(){
+		var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
+			rnowhite = /\s+/g,
+			id = /^#\w+$/,
+			klass = /^\.\w+/,
+			attr = /\[(\w+)(=('|")?(\w+)).*\]/,
+			rquickExpr = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,
+			rsibling = /[+~]/,
+			core_slice = Array.prototype.slice,
+			core_push = Array.prototype.push,
+			rwhite = function(e){
+				return (e + "").replace(rnowhite, "");
+			},
+			trim = function(e){
+				return (e + "").replace(rtrim, "");
+			},
+			getElementsByClassName = function(className, context, tagName){
+				var nodes = [], temp, i, len,
+				 	pattern;
+				tagName = tagName || "*";
+				context = context || doc.body;
+				if (context.getElemetsByClassName) {
+					nodes = core_slice.apply(context.getElementsByClassName(className));
+				} else {
+					 pattern = new RegExp("(^|\\s)" + className + "(\\s|$)");
+					// IE8-
+					nodes = context.getElementsByTagName(tagName);
+					temp = [];
+					for (i = 0, len = nodes.length; i < len; i++) {
+						if (pattern.test(nodes[i].className)) {
+							temp.push(nodes[i]);
+						}
+					}
+					nodes = temp;
+				}
+				return nodes;
+			},
+			query = function(factor, context){
+				var nodes = [], i = 0, len;
+				factor = rwhite(factor) ;
+				context = typeof context === "string" ? Selector(context) : (context.length == null && context.nodeType === ELE_TYPE) ? [context] : context;
+				for (len = context.length; i < len; i ++) {
+					
+				}
+				return nodes;
+			},
+			fliter = function(nodes, p){
+				var t = []
+				return t;
+			};
+		doc.getElementsByClassName ? true : (doc.getElementsByClassName = getElementsByClassName);
+		return function(str, context){
+			var strs = str.split(","), nodes = [], len = strs.length - 1;
+			context = context || doc.body;
+			if (strs.length > 0) {
+				nodes = query(trim(strs[length - 1]), context);
+				if (nodes.length > 0) {
+					while (len > 0 && nodes.length > 0) {
+						nodes = filter(nodes, trim(strs[len--]));
+					}
+				}
+			}
+			return ndoes;
+		};
+	}(),
 	isRoot = function(node){
 		return node === window || node === doc || node === doc.body;
 	},

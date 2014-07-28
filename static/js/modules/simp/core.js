@@ -164,7 +164,7 @@
 							errors.push({
 								message : "the request url '" + scripts[i].src + "' is incorrect"
 							});
-						} else if (scripts[i].ready === true) {
+						} else if (scripts[i].ready === true && simply[name]) {
 							if (modulesCache[name] === undefined) {
 								modulesCache[name] = simply[name];
 							}
@@ -267,7 +267,7 @@
     	script.onerror = function(){
     		script.ready = true;
     		script.error = true;
-    	}
+    	};
     	script.modulename = name;
     	script.type = "text/javascript";
     	script.src = source;
