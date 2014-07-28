@@ -16,7 +16,7 @@
 	-webkit-transition: all .3s;
 	-moz-transition: all .3s;
 }
-.video-wrap, .video-wrap .processer{
+.video-wrap, .video-wrap .v-processer{
 	position : relative;
 }
 .video-ctrl{
@@ -24,63 +24,74 @@
 	position: absolute;
 	width : 100%;
 	background : #000;
-	opacity : .9;
-	padding : 10px 50px 10px 90px; 
+	padding : 10px 70px 10px 90px; 
 }
-.video-ctrl .processer{
+.video-ctrl .v-processer{
 	border : 10px solid #000;
 	border-width : 10px 0;
 	background : #999;
 	cursor : pointer;
 }
-.video-ctrl .processer:hover{
+.video-ctrl .v-processer:hover{
 	background : #ccc;	
 }
 
-.video-ctrl .processer:hover .process-line{
-	background : #093;
+.video-ctrl .v-process-line{
+	background : #073;
+	height : 3px;
+	width : 50%;
 }
-.ctrl-menu {
+.video-ctrl .v-processer:hover .v-process-line{
+	background : #093;
+	height : 6px;
+}
+.video-ctrl .v-process-block{
+	position : absolute;
+	left : 50%;
+	top : -3px;
+	width : 8px;
+	height : 12px;
+	opacity : 0;
+	visibility : hidden;
+	display: none;
+	background : #aaa;
+	border : 1px solid #777;
+	box-shadow: 0 0 1px #333;
+}
+.video-ctrl .v-processer:hover .v-process-block{
+	visibility : visible;
+	display : block;
+	opacity: 1;
+	background : #ddd;
+	border-color : #999;
+	box-shadow : 0 0 1px #777;
+}
+.v-ctrl-menu {
 	clear : both;
 	position : relative;
 }
-.ctrl-menu:after, .ctrl-menu:before{
+.v-ctrl-menu:after, .v-ctrl-menu:before{
 	clear : both;
 	overflow : hidde;
 	content : "";
 	visibility : hidden;
 	display: block;
 }
-.video-ctrl .process-line{
-	background : #073;
-	height : 5px;
-	width : 50%;
-}
-.video-ctrl .process-block{
-	position : absolute;
-	width : 10px;
-	height : 15px;
-	background : #aaa;
-	border : 1px solid #777;
-	box-shadow: 0 0 1px #333;
-	left : 50%;
-	top : -5px;
-}
-
-.video-ctrl .process-block:hover{
-	background : #ddd;
-	border-color : #999;
-	box-shadow : 0 0 1px #777;
-}
-.video-ctrl .vol-ctrl{
+.v-tool{
 	position: absolute;
-	right : -30px;
+	right : -65px;
 	top : 2px;
 }
-.vol-ctrl a, .vol-ctrl a:visited{
+.v-tool li{
+	float : left;
+	margin-right : 12px;
+}
+.v-tool a, .v-tool a:visited{
 	color : #aaa;
 	cursor : pointer;
 }
-.vol-ctrl a:hover{
-	color : #ddd;
+
+.v-tool a:hover{
+	color : #ddd;	
 }
+
