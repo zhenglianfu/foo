@@ -8,10 +8,13 @@
 	var sim = window.simp || {},
 	ELE_TYPE = 1,
 	doc = window.document,
-	tag = /^<([a-zA-Z0-9]+)>(.*)/;
+	tagExpr = /^<([a-zA-Z0-9]+)\s*([a-zA-Z0-9='"\s]*)>(.*)/,
+	rEndTag = /<\/([a-zA-Z0-9]+)\s*>$/,
+	endTagStart = /^<\/([a-zA-Z0-9]+)\s*>/;
 	// ie6,7,8 don't support getElementsByClassName
 	Selector = function(){
 		var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
+			chracters = /[a-z]/,
 			rnowhite = /\s+/g,
 			id = /^#\w+$/,
 			klass = /^\.\w+/,
@@ -72,7 +75,7 @@
 					}
 				}
 			}
-			return ndoes;
+			return nodes;
 		};
 	}(),
 	isRoot = function(node){
@@ -80,7 +83,7 @@
 	},
 	// nodes must be array like
 	Node = function Node(nodes){
-		var i, len, count = 0, isCollection = false; 
+		var i, len, count = 0, isCollection = false;
 		if (!(this instanceof Node)) {
 			return new Node(nodes);
 		}
@@ -249,9 +252,42 @@
 	};
 	sim.dom = function(s, context){
 		if (s == null || sim.trim(s) === "") {
-			return Node();
+			throw {
+				name : "invalidate arguments",
+				message : "不合法的参数"
+			}
 		} else if (typeof s === "string") {
-			// is tag create?
+			if (tagExpr.test(s)) { // is tags 
+				var tags = s.match(tagExpr),
+					nodes = [],
+					index = 0,
+					insert = true,
+					currentTag = "",
+					currentElement = null;
+				while(tags[1]){
+					if (tags[3] && endTagStart.test(tags[3])) {
+						insert = false;
+					} else {
+						insert = true;
+					}
+					if (nodes[index] == null) {
+						nodes.push(doc.createElement(tags[1]));
+						currentElement = nodes[index];
+					} else if (insert) {
+						currentElement ? currentElement.appendChild(doc.createElement(tags[1])) :
+								nodes[index].appendChild(doc.createElement(tags[1])); 
+					} else {
+						currentElement.parentNode.appendChild(doc.createElement(tags[1]));
+					}
+					currentTag = tags[1];
+					
+				}
+				var tag = tags[1];
+				var attrs = tags[2];
+				var p = doc.createElement(tag);
+			} else { // query 
+				return Node(Selector(s, context))
+			}
 			
 		} else if (s.nodeType === 1) {
 			return Node([s]);
@@ -260,11 +296,5 @@
 		}
 	};
 
-	/**
-	 *  for test 
-	 *  TODO delete it later;
-	 * */
-	//TODO delete it later;
-	sim.dom = Node;
 	window.simp = sim;
 }(window));
