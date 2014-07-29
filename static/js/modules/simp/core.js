@@ -7,9 +7,10 @@
 		var _sim = window.simp,
 			doc = window.document,
 			version = "1.0",
+			httpExpr = /^(https?:\/\/)/i,
 			rtrim = /^\s+|\s+$/g, 
 			class2type = {},
-			modules = ["dom", "ajax", "event"],
+			modules = ["dom", "ajax", "event", "animation"],
 			modulesCache = {},
 			core_toString = class2type.toString,
 			core_hasOwn = class2type.hasOwnProperty,
@@ -103,6 +104,16 @@
     			modules.push(name);
     		} 
     	},
+    	removeModule : function(name){
+    		var names = (name + "").split(","),
+    		i = 0, len = names.length, t;
+    		for (; i < len; i++) {
+    			t = simply.trim(names[i]);
+    			if (modules.indexOf(t) > -1) {
+    				simply[names[i]] = undefined;
+    			}
+    		}
+    	},
     	setModules : function(m){
     		if (simply.isArray) {
     			modules = m;
@@ -128,16 +139,6 @@
 				return e + "";
 			}
 			return typeof e === "object" ? class2type[core_toString.apply(e)] || "object" : typeof e;
-		},
-		removeModule : function(name){
-			var names = (name + "").split(","),
-				i = 0, len = names.length, t;
-			for (; i < len; i++) {
-				t = simply.trim(names[i]);
-				if (modules.indexOf(t) > -1) {
-					simply[names[i]] = undefined;
-				}
-			}
 		},
     	require : function(m_name, uri, callback){
 			var names = (m_name + "").split(","), i, len, name, errors = [], scripts = [], data = {};
