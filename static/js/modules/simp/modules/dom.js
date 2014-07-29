@@ -264,7 +264,7 @@
 					insert = true,
 					currentTag = "",
 					currentElement = null;
-				while(tags[1]){
+				while(tags && tags[1]){
 					if (tags[3] && endTagStart.test(tags[3])) {
 						insert = false;
 					} else {
@@ -280,11 +280,8 @@
 						currentElement.parentNode.appendChild(doc.createElement(tags[1]));
 					}
 					currentTag = tags[1];
-					
+					tags = tags[3] && tags[3].match(tagExpr);　
 				}
-				var tag = tags[1];
-				var attrs = tags[2];
-				var p = doc.createElement(tag);
 			} else { // query 
 				return Node(Selector(s, context))
 			}

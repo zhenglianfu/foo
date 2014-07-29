@@ -66,23 +66,31 @@
 				}
 	};
     simply.extend({
+    	version : version,
     	defaultURI : default_url,
     	isIE : function(){
-    		
-    	}(),
-    	gtIE8 : function(){
-    		
+    		var p = /MSIE\s*([\d\.]+)/i,
+    			m = agent.match(p);
+    		if (m && m[1]) {
+    			return parseFloat(m[1]);
+    		}
+    		return false;
     	}(),
     	isFireFox : function(){
     		var p = /Firefox\/([\d\.]+)/i,
     			m = agent.match(p);
-    		if (m && m.length) {
-    			return m[1];
+    		if (m && m[1]) {
+    			return parseFloat(m[1]);
     		}
     		return false;
     	}(),
     	isChrome : function(){
-    		
+    		var p = /Chrome\/([\d\.]+)/i,
+    			m = agent.match(p);
+    		if (m && m[1]) {
+    			return parseFloat(m[1]);
+    		}
+    		return false;
     	}(),
     	setDefaultURI : function(uri){
     		if (typeof uri === "string") {
