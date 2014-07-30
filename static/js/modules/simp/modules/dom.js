@@ -20,9 +20,33 @@
 			klass = /^\.\w+/,
 			attr = /\[(\w+)(=('|")?(\w+)).*\]/,
 			rquickExpr = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/,
-			rsibling = /[+~]/,
+			rsibling = /[\x20\t\r\n\f]*[+~]/,
+			rinputs = /^(?:input|select|textarea|button)$/i,
+			rattributeQuotes = /\=[\x20\t\r\n\f]*([^'"\]]*)[\x20\t\r\n\f]*\]/g,
+			runescape = /\\([\da-fA-F]{1,6}[\x20\t\r\n\f]?|.)/g,
+			// Whitespace characters http://www.w3.org/TR/css3-selectors/#whitespace
+			whitespace = "[\\x20\\t\\r\\n\\f]",
+			// http://www.w3.org/TR/css3-syntax/#characters
+			characterEncoding = "(?:\\\\.|[\\w-]|[^\\x00-\\xa0])+",
+			identifier = characterEncoding.replace( "w", "w#" ),
+			// Acceptable operators http://www.w3.org/TR/selectors/#attribute-selectors
+			operators = "([*^$|!~]?=)",
+			attributes = "\\[" + whitespace + "*(" + characterEncoding + ")" + whitespace +
+					"*(?:" + operators + whitespace + "*(?:(['\"])((?:\\\\.|[^\\\\])*?)\\3|(" + identifier + ")|)|)" + whitespace + "*\\]",
+			pseudos = ":(" + characterEncoding + ")(?:\\(((['\"])((?:\\\\.|[^\\\\])*?)\\3|((?:\\\\.|[^\\\\()[\\]]|" + attributes.replace( 3, 8 ) + ")*)|.*)\\)|)",
 			core_slice = Array.prototype.slice,
 			core_push = Array.prototype.push,
+			matchExpr = {
+				"ID" : new RegExp("^#(" + characterEncoding + ")"),
+				"CLASS" : new RegExp("^\\.(" + characterEncoding + ")"),
+				"ATTR" : new RegExp("^" + attributes),
+				"NAME" : new RegExp(),
+				"TAG" : new RegExp("^(" + characterEncoding.replace("w", "w*") + ")"),
+				"CHILD" : new RegExp( "^:(only|first|last|nth|nth-last)-(child|of-type)(?:\\(" + whitespace +
+						"*(even|odd|(([+-]|)(\\d*)n|)" + whitespace + "*(?:([+-]|)" + whitespace +
+						"*(\\d+)|))" + whitespace + "*\\)|)", "i" ),
+				"PSEUDO" : new RegExp("^" + pseudos)
+			},
 			rwhite = function(e){
 				return (e + "").replace(rnowhite, "");
 			},
@@ -55,7 +79,10 @@
 				factor = rwhite(factor) ;
 				context = typeof context === "string" ? Selector(context) : (context.length == null && context.nodeType === ELE_TYPE) ? [context] : context;
 				for (len = context.length; i < len; i ++) {
-					
+						if (context[i].nodeType !== ELE_TYPE) {
+							continue;
+						}
+						
 				}
 				return nodes;
 			},
@@ -64,14 +91,30 @@
 				return t;
 			};
 		doc.getElementsByClassName ? true : (doc.getElementsByClassName = getElementsByClassName);
+		/**
+		 *  test 
+		 *  
+		 * */
+		window.matchExpr = matchExpr;
+		/**
+		 * test end
+		 * */
 		return function(str, context){
-			var strs = str.split(","), nodes = [], len = strs.length - 1;
+			var strs = str.split(","), nodes = [], len,
+				selects;
+			if (strs.length > 1) {
+				for (var i = 0, len = strs.length; i < lne; i++ ) {
+					nodes.concat(Selector(strs[i], context));
+				}
+			}
 			context = context || doc.body;
-			if (strs.length > 0) {
-				nodes = query(trim(strs[length - 1]), context);
+			if (strs.length == 1) {
+				selects = simp.trim(strs[0]).split(" ");
+				var length = selects.length;
+				nodes = query(trim(strs[--length]), context);
 				if (nodes.length > 0) {
-					while (len > 0 && nodes.length > 0) {
-						nodes = filter(nodes, trim(strs[len--]));
+					while (length > 0 && nodes.length > 0) {
+						nodes = filter(nodes, trim(strs[--length]));
 					}
 				}
 			}
@@ -115,6 +158,13 @@
 				return this;
 			},
 			addClass : function(clazz){
+				var i = 0, len = this.length;
+				clazz = (clazz + "").split(",").join(" ");
+				for (; i < len; i++) {
+					if (this[i] && this[i].nodeType === ELE_TYPE) {
+						this[i].className = this[i].className + " " + clazz;
+					}
+				}
 				return this;
 			},
 			hasClass : function(){
@@ -282,10 +332,10 @@
 					currentTag = tags[1];
 					tags = tags[3] && tags[3].match(tagExpr);　
 				}
+				return Node(nodes);
 			} else { // query 
 				return Node(Selector(s, context))
 			}
-			
 		} else if (s.nodeType === 1) {
 			return Node([s]);
 		} else if (s.length) {
