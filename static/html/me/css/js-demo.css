@@ -6,4 +6,21 @@
 	padding : 5px;
 }
 
+#js-animation .demo .block{
+	width : 5%;
+	height : 50px;
+}
 
+#js-sort-panel{
+	height : 400px;
+}
+
+#js-sort-container{
+	width : 100%;
+	height : 100%;
+}
+
+#js-sort-container>li{
+	width : 5%;
+	float : left;
+}
