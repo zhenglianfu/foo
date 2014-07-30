@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js ie ie6 lt-ie10 lt-ie9 lt-ie8 lt-ie7"> <![endif]--> 
+<!--[if IE 7]> <html class="no-js ie ie7 lt-ie10 lt-ie9 lt-ie8"> <![endif]--> 
+<!--[if IE 8]> <html class="no-js ie ie8 lt-ie10 lt-ie9"> <![endif]--> 
+<!--[if IE 9]> <html class="no-js ie ie9 lt-ie10"> <![endif]--> 
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	<title>Javascript</title>
+	<link rel="stylesheet" type="text/css" href="../../css/frames/mine/mine.css">
+	<!--[if lt IE 7]>
+		<link rel="stylesheet" type="text/css" href="../../css/frames/mine/mine-ie.css">
+	 <![endif]-->
+	 <!--[if IE 7]> <link rel="stylesheet" type="text/css" href="../../css/frames/me/mine-ie.css"> <![endif]-->
+	 <!--[if IE 8]> <link rel="stylesheet" type="text/css" href="../../css/frames/me/mine-ie.css"> <![endif]-->
+	 <!--[if gt IE 8]> <![endif]-->  
+	<link rel="stylesheet" type="text/css" href="./css/js-demo.css">
+</head>
+<body>
+	<div class='page'>
+		<div class="header">
+			<div class="nav">
+				<div class="menu">
+					<ul>
+						<li>
+							<a href="one.html" rel="home">
+								HOME
+							</a>
+						</li>
+						<li>
+							<a href="html5.html">HTML5</a>
+						</li>
+						<li  class="menu-grp">
+							<a href="css3.html">CSS3</a>
+							<ul class="sub-menu-list">
+								<li><a href="css3-animation.html">Animation</a></li>
+								<li><a href="css3-features.html">Features</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="csscompiler.html">CSS Compiler</a>
+						</li>
+						<li class="menu-grp current">
+							<a href="js.html">JavaScript</a>
+							<ul class="sub-menu-list">
+								<li><a href="js-littlejs.html">Little JS</a></li>
+								<li><a href="#">Little Pattern</a></li>
+								<li><a href="#">Little MV*</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="frame.html">Little Framework</a>
+						</li>
+						<li>
+							<a href="all.html">ALL IN ONE</a>
+						</li>
+					</ul>
+				</div>
+				<div class="menu menu-ext">
+					<ul>
+						<li class="menu-grp">
+							<a href="#other" class="noicon">
+							<i class="icon-link"></i> OTHER SITE</a>
+							<ul class="sub-menu-list">
+								<li>
+									<a href="http://smartpython.sinaapp.com/" target="_blank">Smart Python</a>
+								</li>
+								<li>
+									<a href="http://impostor.sinaapp.com/" target="_blank">Impostor PHP</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="container padded">
+			<div class="row">
+				<div class="whole padded">
+					<h4>Animation in JS</h4>
+					<div id="js-animation">
+						<p>DEMO</p>
+						<div class='demo box square relative'>
+							<div class="block asphalt-bg"></div>
+						</div>
+						<div class="gap-top">
+							<ul class="radio-list">
+								<li>
+									<label><input type="radio" name="type" value="linear" /> Linear</label>
+								</li>
+								<li>
+									<label><input type="radio" name="type" value="quan-easeIn" /> Quad easeIn</label>
+								</li>
+								<li>
+									<label><input type="radio" name="type" value="quan-easeOut" /> Quad easeOut</label>
+								</li>
+								<li>
+									<label><input type="radio" name="type" value="cubic-easeIn" /> Cubic easeIn</label>
+								</li>
+								<li>
+									<label><input type="radio" name="type" value="cubic-easeOut" /> Cubic easeOut</label>
+								</li>
+								<li>
+									<label><input type="radio" name="type" value="back-easeIn" /> Back easeIn</label>
+								</li>
+								<li>
+									<label><input type="radio" name="type" value="back-easeOut" /> Back easeOut</label>
+								</li>
+							</ul>
+						</div>
+						<div>
+							<ul class="button-grp">
+								<li><button>play</button></li>
+								<li><button>stop</button></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="whole padded">
+					<h4>Sort Panel</h4>
+					<div id="js-sort-panel" class="box square">
+						<ul id="js-sort-container"></ul>
+					</div>
+					<ul class="radio-list gap-top">
+						<li>
+							<label><input name="sort" type="radio" value="bubble" /> Bubble</label>
+						</li>
+						<li>
+							<label><input name="sort" type="radio" value="insert" /> Insert</label>
+						</li>
+						<li>
+							<label><input name="sort" type="radio" value="quick" /> Quick</label>
+						</li>
+						<li>
+							<label><input name="sort" type="radio" value="shell" /> Shell</label>
+						</li>
+						<li>
+							<label><input name="sort" type="radio" value="heap" /> Heap</label>
+						</li>
+					</ul>
+					<ul class="gap-top button-grp">
+						<li><button>play</button></li>
+						<li><button>stop</button></li>
+						<li><button>reset</button></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="footer"></div>
+	</div>
+	<script type="text/javascript" src="../../js/modules/simp/core.js"></script>
+	<script type="text/javascript" src="./js/js-little.js"></script>
+</body>	
+</html>

@@ -1,0 +1,3 @@
+simp.ready(function(){
+	
+});
