@@ -90,7 +90,11 @@
 				var t = []
 				return t;
 			};
-		doc.getElementsByClassName ? true : (doc.getElementsByClassName = getElementsByClassName);
+		var Expr = {
+				preFilter : {
+					
+				}
+		}
 		/**
 		 *  test 
 		 *  
