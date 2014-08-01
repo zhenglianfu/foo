@@ -180,13 +180,16 @@
 			remove : function(){
 				return this;
 			},
+			prepend : function(){
+				
+			},
 			append : function(){
 				
 			},
-			after : function(){
+			insertAfter : function(){
 				
 			},
-			before : function(){
+			insertBefore : function(){
 				
 			},
 			next : function(){
