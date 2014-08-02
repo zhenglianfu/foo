@@ -1,3 +1,5 @@
 (function(){
-	var nav = simp.dom("<div>");
+	simp.require("dom", function(){
+		var nav = simp.dom("<div>");	
+	});
 }());
