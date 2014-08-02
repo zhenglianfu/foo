@@ -12,8 +12,13 @@
 	rEndTag = /<\/([a-zA-Z0-9]+)\s*>$/,
 	endTagStart = /^<\/([a-zA-Z0-9]+)\s*>/;
 	// ie6,7,8 don't support getElementsByClassName
+	// document.querySelectAll(cssSelector)
+	// document.querySelect(cssSelector)
 	Selector = function(){
-		var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
+		var arr = [],
+			push = arr.push,
+			slice = arr.slice,
+			rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,
 			chracters = /[a-z]/,
 			rnowhite = /\s+/g,
 			id = /^#\w+$/,
@@ -73,27 +78,60 @@
 					nodes = temp;
 				}
 				return nodes;
-			},
-			query = function(factor, context){
-				var nodes = [], i = 0, len;
-				factor = rwhite(factor) ;
-				context = typeof context === "string" ? Selector(context) : (context.length == null && context.nodeType === ELE_TYPE) ? [context] : context;
-				for (len = context.length; i < len; i ++) {
-						if (context[i].nodeType !== ELE_TYPE) {
-							continue;
-						}
-						
-				}
-				return nodes;
-			},
-			fliter = function(nodes, p){
-				var t = []
-				return t;
 			};
 		var Expr = {
+				cacheLength : 32,
+				match : matchExpr,
 				preFilter : {
-					
-				}
+					"ATTR" : function(){},
+					"CHILD" : function(){},
+					"PSEUDO" : function(){}
+				},
+				fliter : {
+					"TAG" : function(nodeName){
+						if (nodeName === "*") {
+							return function(){
+								return true;
+							}
+						} 
+						nodeName = nodeName.toLowerCase();
+						return function(elem){
+							return elem.nodeName && elem.nodeName.toLowerCase() === nodeName; 
+						}
+					},
+					"CLASS" : function(className){
+						var p = new RegExp( "(^|" + whitespace + ")" + className + "(" + whitespace + "|$)" );
+						return function(elem){
+							return p.test(elem.className || (ele.getAttribute && ele.getAttribute("class")) || "");
+						}
+					},
+					"ATTR" : function(name, operate, check){
+						return function(){
+							
+						}
+					}
+ 				}
+		};
+		// for other select
+		var select = function(str, context, result){
+			
+			return result;
+		};
+		// a contain b ?
+		var contain = doc.contains || docElem.compareDocumentPosition ? function(a, b){
+			var adown = a.nodeType === 9 ? a.documentElement : a,
+					bup = b && b.parentNode;
+			return adown === bup || !!(bup && bup.nodeType === 1 && (adown.contains ? adown.contains(bup) : adown.compareDocumentPosition &&
+						adwon.compareDocumentPosition(bup) & 16) );
+		} : function(a, b){
+			while(b){
+				if ((b = b.parentNode)){
+					if (b === a) {
+						return true;
+					}
+				} 
+			}
+			return false;
 		}
 		/**
 		 *  test 
@@ -103,26 +141,89 @@
 		/**
 		 * test end
 		 * */
-		return function(str, context){
-			var strs = str.split(","), nodes = [], len,
-				selects;
-			if (strs.length > 1) {
-				for (var i = 0, len = strs.length; i < lne; i++ ) {
-					nodes.concat(Selector(strs[i], context));
+		return function(str, context, result){
+			var nodes = [], nodeType, elem, m;
+			context = context || doc;
+			result = result || []; 
+			if (!str || typeof str !== "string") {
+				return result;
+			}
+			if ( (nodeType = context.nodeType) !== 1 && nodeType !== 9 ) {
+				return [];
+			}
+			// quick match id, tag, class
+			if ((match = rquickExpr.exec(str))) {
+				// ID
+				if ((m = match[1])) {
+					// context is document
+					if (nodeType === 9) {
+						elem = context.getElementById( m );
+						// ie will get the name matched the id
+						if (elem.id == m) {
+							result.push(elem);
+							return result;
+						} else {
+							return result;
+						}
+					} else {
+						// context is not document
+						if (context.ownerDocument && (elem = context.ownerDocument.getElemetById(m)) && elem.id == m && contain(context, elem)) {
+							result.push(elem);
+							return result;
+						} else {
+							return result;
+						}
+					}
+				}
+				// tag
+				else if ((m = match[2])) {
+					push.apply(result, slice.call(context.getElementsByTagName(m) , 0));
+					return result;
+				}
+				// class
+				else if ((m = match[2])) {
+					push.apply(result, slice.call(getElementsByClassName(m, context) , 0));
+					return result;
 				}
 			}
-			context = context || doc.body;
-			if (strs.length == 1) {
-				selects = simp.trim(strs[0]).split(" ");
-				var length = selects.length;
-				nodes = query(trim(strs[--length]), context);
-				if (nodes.length > 0) {
-					while (length > 0 && nodes.length > 0) {
-						nodes = filter(nodes, trim(strs[--length]));
+			// not match quick expr
+			if (context.querySelectAll) {
+				var old = true,
+					group = str.split(","),
+					i = 0,
+					nid = "foo-" + new Date().getTime(),
+					newContext = context,
+					newSelector = nodeType === 9 && str; // must be root
+				// IE 8 doesn't work on object elements
+				// add id to the elem to work around
+				if (nodeType === 1 && newContext.nodeName.toLowerCase() !== 'object') {
+					if ((old = newContext.getAttribute("id"))) {
+						nid = old.replace("", "");
+					} else {
+						context.setAttribute("id", nid);
+					}
+					nid = "[id='" + nid + "']";
+					newContext = rsibling.test(str) && context.parentNode || context;
+					while(group[i++]) {					
+						group[i] = nid + " " + group[i];
+					}
+					newSelector = group.join(",");
+				} 
+				if (newSelector) {
+					try{
+						push.apply(result, slice.call(newContext.querySelectorAll(newSelector), 0));
+						return result;
+					} catch(e){
+						// log
+					}finally{
+						if (!old) {
+							context.removeAttribute("id");
+						}
 					}
 				}
 			}
-			return nodes;
+			// all other select
+			return select(str, context, result);
 		};
 	}(),
 	isRoot = function(node){
@@ -151,6 +252,13 @@
 		}
 	};
 	Node.prototype = {
+			each : function(fn){
+				sim.each(this, fn);
+				return this;
+			},
+			map : function(fn){
+				return sim.map(this, fn);
+			},
 			size : function(){
 				return this.length;
 			},
@@ -298,16 +406,26 @@
 				return false;
 			},
 			removeAttr : function(k){
+				var i = 0, len = this.length;
+				k = k + "";
+				for (; i < len; i++) {
+					this[i].removeAttribute && this[i].removeAttribute(k);
+				}
 				return this;
 			},
 			data : function(k, d){
 				return this;
 			},
 			find : function(selector){
-				return Node(Selector(selector, this));
+				var i = 0, len = this.length, result = [];
+				for (; i<len; i++) {
+					Selector(selector, this[i], result);
+				}
+				return Node(result);
 			}
 	};
 	sim.dom = function(s, context){
+		var i, len;
 		if (s == null || sim.trim(s) === "") {
 			throw {
 				name : "invalidate arguments",
@@ -337,15 +455,19 @@
 						currentElement.parentNode.appendChild(doc.createElement(tags[1]));
 					}
 					currentTag = tags[1];
-					tags = tags[3] && tags[3].match(tagExpr);　
+					tags = tags[3] && tags[3].match(tagExpr);
 				}
 				return Node(nodes);
 			} else { // query 
+				// hasContext
+				// isString, isNodeList, isMyNodeType, isNull, isHTMLElement
+				context = typeof context === "string" ? Selector(context) : context;
+				for (i = 0, len = context.length; i < len; i++) {}
 				return Node(Selector(s, context))
 			}
 		} else if (s.nodeType === 1) {
 			return Node([s]);
-		} else if (s.length) {
+		} else if (s.length != null) {
 			return Node(s);
 		}
 	};
