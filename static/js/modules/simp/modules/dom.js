@@ -8,6 +8,7 @@
 	var sim = window.simp || {},
 	ELE_TYPE = 1,
 	doc = window.document,
+	rnowhite = /\S+/g,
 	tagExpr = /^<([a-zA-Z0-9]+)\s*([a-zA-Z0-9='"\s]*)>(.*)/,
 	rEndTag = /<\/([a-zA-Z0-9]+)\s*>$/,
 	endTagStart = /^<\/([a-zA-Z0-9]+)\s*>/;
@@ -133,14 +134,6 @@
 			}
 			return false;
 		}
-		/**
-		 *  test 
-		 *  
-		 * */
-		window.matchExpr = matchExpr;
-		/**
-		 * test end
-		 * */
 		return function(str, context, result){
 			var nodes = [], nodeType, elem, m;
 			context = context || doc;
@@ -187,7 +180,7 @@
 				}
 			}
 			// not match quick expr
-			if (context.querySelectAll) {
+			if (context.querySelectorAll) {
 				var old = true,
 					group = str.split(","),
 					i = 0,
@@ -264,28 +257,62 @@
 			},
 			eq : function(int){
 				var len = this.length;
-				return _(this[int]);
+				return Node([this[int < 0 ? len + int : int]]);
 			},
-			css : function(){
+			css : function(opt){
+				var i, ele, len = this.length, p;
+				opt = opt || {};
+				for (; i < len; i++) {
+					//TODO add style
+				}
 				return this;
 			},
 			addClass : function(clazz){
-				var i = 0, len = this.length;
-				clazz = (clazz + "").split(",").join(" ");
+				var i = 0, len = this.length, ele, classes, cur, j, clen;
+				classes = ((clazz || "").match(rnowhite) || []);
+				clen = classes.length;
 				for (; i < len; i++) {
-					if (this[i] && this[i].nodeType === ELE_TYPE) {
-						this[i].className = this[i].className + " " + clazz;
+					ele = this[i];
+					cur = ele && ele.nodeType === ELE_TYPE && (ele.className ? (" " + ele.className + " ") : " ");   
+					if (cur) {
+						j = 0
+						for (; j < clen; j++) {
+							if (cur.indexOf(" " + classes[j] + " ") < 0) {
+								cur += classes[j] + " ";
+							}
+						}
+						ele.className = sim.trim(cur);
 					}
 				}
 				return this;
 			},
-			hasClass : function(){
-				return false;
+			hasClass : function(className){
+				var p = new Regexp("(^|\\s)" + className + "(\\s|$)")
+				return p.test(this[0] && this[0].className);
 			},
-			removeClass : function(clazz){
+			removeClass : function(className){
+				var i= 0, len = this.length, j, ele, cur, clen,
+					classes = (className || "").match(rnowhite) || [];
+				clen = classes.length;
+				for (; i < len; i++) {
+					ele = this[i];
+					cur = ele && ele.nodeType === ELE_TYPE && (ele.className ? " " + ele.className + " " : " ");
+					if (cur) {
+						j = 0;
+						for (; j < clen; j++) {
+							cur = cur.replace(" " + classes[j] + " ", " ");
+						}
+					}
+					// remove all if className is not defined
+					ele.className = className ? sim.trim(cur) : ""; 
+				}
 				return this;
 			},
 			remove : function(){
+				var i = 0, len = this.length;
+				for (; i < len; i++) {
+					this[i] && this[i].remove && this[i].remove();  
+				}
 				return this;
 			},
 			prepend : function(){
@@ -387,16 +414,27 @@
 			hide : function(){
 				return this;
 			},
-			hasClass : function(clazz){
-				return false;
-			},
 			is : function(){
 				return false;
 			},
 			html : function(html){
+				var i = 0, len = this.length, ele;
+				if (html == null) {
+					return this[0] && this[0].innerHTML;
+				}
+				for (; i < len; i++) {
+					this[i].innerHTML = html;
+				}
 				return this;
 			},
 			text : function(text){
+				var i = 0, len = this.length;
+				if (text == null) {
+					return this[0].textContent;
+				} 
+				for (; i < len; i++) {
+					this[i].textContent = text;
+				}
 				return this;
 			},
 			attr : function(k, v){
@@ -461,8 +499,14 @@
 			} else { // query 
 				// hasContext
 				// isString, isNodeList, isMyNodeType, isNull, isHTMLElement
-				context = typeof context === "string" ? Selector(context) : context;
-				for (i = 0, len = context.length; i < len; i++) {}
+				context = (typeof context === "string" ? Selector(context) : context) || doc;
+				if (typeof context.length === "number") {
+					var nodes = [];
+					for (i = 0, len = context.length; i < len; i++) {
+						Selector(s, context[i], nodes);
+					}
+					return Node(nodes);
+				}
 				return Node(Selector(s, context))
 			}
 		} else if (s.nodeType === 1) {
