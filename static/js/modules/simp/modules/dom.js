@@ -246,7 +246,11 @@
 	};
 	Node.prototype = {
 			each : function(fn){
-				sim.each(this, fn);
+				if (fn && sim.isFunction(fn)) {
+					for (var i = 0, len = this.length; i < len; i++) {
+						fn.call(this[i], i, this[i]);
+					}
+				}
 				return this;
 			},
 			map : function(fn){
@@ -438,10 +442,23 @@
 				return this;
 			},
 			attr : function(k, v){
+				var ele = this[0], i, len;
+				if (v === undefined) {
+					return ele && ele.getAttribute(k);
+				} else {
+					for (i = 0, len = this.length; i < len; i++) {
+						ele = this[i];
+						ele && ele.setAttribute(k, v);
+					}
+				}
 				return this;
 			},
 			hasAttr : function(k){
-				return false;
+				var ele = this[0];
+				if (k === undefined) {
+					return false;
+				}
+				return ele && ele.hasAttribute && ele.hasAttribute(k); 
 			},
 			removeAttr : function(k){
 				var i = 0, len = this.length;
