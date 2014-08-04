@@ -135,7 +135,7 @@
 			return false;
 		}
 		return function(str, context, result){
-			var nodes = [], nodeType, elem, m;
+			var nodeType, elem, m;
 			context = context || doc;
 			result = result || []; 
 			if (!str || typeof str !== "string") {
