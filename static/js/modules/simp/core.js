@@ -241,14 +241,14 @@
     		var i ,len;
     		if (simply.isFunction(fun)) {
     			for (i = 0, len = arr.length; i < len; i++) {
-    				fun(arr[i], i);
+    				fun.call(arr[i], i, arr[i]);
     			}
     		}
     	},
     	map : function(arr, fun){
     		var rets = [], i, len, ret;
     		for (i = 0, len = arr.length; i < len; i++) {
-    			ret = simply.isFunction(fun) ? fun(arr[i], i) : fun;
+    			ret = simply.isFunction(fun) ? fun.call(arr[i], i, arr[i]) : fun;
     			rets.push(ret);
     		}
     		return rets;
