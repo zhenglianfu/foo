@@ -254,7 +254,7 @@
     		return rets;
     	}
     });
-    simply.each("Number|Array|Object|Function|Null|Undefined|Date|RegExp|String".split("|"), function(e){
+    simply.each("Number|Array|Object|Function|Null|Undefined|Date|RegExp|String".split("|"), function(i, e){
     	class2type["[object " + e + "]"] = e.toLowerCase(); 
     });
 	window.simp = simply;
