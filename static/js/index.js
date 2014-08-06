@@ -4,7 +4,7 @@ simp.ready(function(){
 			event = data.event;
 		var container = dom(".container");
 		event.on(container,  "click",  "[data-href]",  function(){
-			window.location.href = dom(this).attr(data-href);
+			window.location.href = dom(this).attr("data-href");
 		});
 	});
 });
