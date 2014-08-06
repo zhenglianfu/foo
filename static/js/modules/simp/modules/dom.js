@@ -530,7 +530,10 @@
 			return Node([s]);
 		} else if (s.length != null) {
 			return Node(s);
+		} else if (s instanceof Node) {
+			return s;
 		}
+		return Node([]);
 	};
 
 	window.simp = sim;
