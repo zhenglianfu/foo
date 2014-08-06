@@ -24,30 +24,14 @@ function string2byte(str){
 	var t = "", code, middle = 1 << 7, max = 1 << 8, b = [];
 	for (var i = 0, len = str.length; i < len; i += 2) {
 		code = parseInt(str.substring(i, i + 2), 16);
-		if (code < middle) {
-			t += String.fromCharCode(code);
-		} else if (code === middle) {
-			t += String.fromCharCode(0);
-		} else {
-			t += String.fromCharCode(code - max);
-		}
+		b.push(0xff & code);
 	}
-	return t;
+	return b;
 }
 
-// when a char from a negative num, it will prased as a positive num
-// unicode range 0~65535
-// byte range -127~127 8bits 1byte
-// 0~127 unicode range is [0, 127]
-// -127~-1 unicode range is [65409, 65535]
-String.prototype.byteCodeAt = function(position){
-	var code =  this.charCodeAt(position);
-	//over 127 , parsed as a negative num
-	if (code > 127) {
-		return code | 0xffffff00;
-	}
-	return code;
-}
+Array.isArray = Array.isArray || function(obj){
+	return Object.prototype.toString.call(obj) === "[object Array]";
+} 
 
 function des (key, message, encrypt, mode, iv, padding) {
 	  //declaring this locally speeds things up a bit
@@ -61,7 +45,7 @@ function des (key, message, encrypt, mode, iv, padding) {
 	  var spfunction8 = new Array (0x10001040,0x1000,0x40000,0x10041040,0x10000000,0x10001040,0x40,0x10000000,0x40040,0x10040000,0x10041040,0x41000,0x10041000,0x41040,0x1000,0x40,0x10040000,0x10000040,0x10001000,0x1040,0x41000,0x40040,0x10040040,0x10041000,0x1040,0,0,0x10040040,0x10000040,0x10001000,0x41040,0x40000,0x41040,0x40000,0x10041000,0x1000,0x40,0x10040040,0x1000,0x41040,0x10001000,0x40,0x10000040,0x10040000,0x10040040,0x10000000,0x40000,0x10001040,0,0x10041040,0x40040,0x10000040,0x10040000,0x10001000,0x10001040,0,0x10041040,0x41000,0x41000,0x1040,0x1040,0x40040,0x10000000,0x10041000);
 
 	  //create the 16 or 48 subkeys we will need
-	  var keys = des_createKeys (key);
+	  var keys = des_createKeys (key, Array.isArray(key));
 	  var m=0, i, j, temp, temp2, right1, right2, left, right, looping;
 	  var cbcleft, cbcleft2, cbcright, cbcright2
 	  var endloop, loopinc;
@@ -77,30 +61,37 @@ function des (key, message, encrypt, mode, iv, padding) {
 	  }
 
 	  //pad the message depending on the padding parameter
+	  var isArrayMessage = Array.isArray(message);
 	  if (padding == 2) 
-	    message += "        "; //pad the message with spaces
+		  isArrayMessage ? (message = message.concat([32,32,32,32,32,32,32,32])) : message += "        "; //pad the message with spaces
 	  else if (padding == 1) {
-	    temp = 8-(len%8); message += String.fromCharCode (temp,temp,temp,temp,temp,temp,temp,temp); 
+	    temp = 8-(len%8); 
+	    isArrayMessage ? (message = message.concat([temp,temp,temp,temp,temp,temp,temp,temp])) : (message += String.fromCharCode (temp,temp,temp,temp,temp,temp,temp,temp)); 
 		  if (temp==8) 
 		    len+=8;
 	  } //PKCS7 padding 这里其实只是PKCS5 padding, PKCS5规定采用8位补全，而PKCS7则不确定位数
 	  else if (!padding) 
-	    message += "\0\0\0\0\0\0\0\0"; //pad the message out with null bytes
+		  isArrayMessage ? (message = message.concat([0,0,0,0,0,0,0,0])) : (message += "\0\0\0\0\0\0\0\0"); //pad the message out with null bytes
 
 	  //store the result here
 	  result = "";
 	  tempresult = "";
 
 	  if (mode == 1) { //CBC mode
-	    cbcleft = (iv.byteCodeAt(m++) << 24) | (iv.byteCodeAt(m++) << 16) | (iv.byteCodeAt(m++) << 8) | iv.byteCodeAt(m++);
-	    cbcright = (iv.byteCodeAt(m++) << 24) | (iv.byteCodeAt(m++) << 16) | (iv.byteCodeAt(m++) << 8) | iv.byteCodeAt(m++);
+	    cbcleft = (iv.charCodeAt(m++) << 24) | (iv.charCodeAt(m++) << 16) | (iv.charCodeAt(m++) << 8) | iv.charCodeAt(m++);
+	    cbcright = (iv.charCodeAt(m++) << 24) | (iv.charCodeAt(m++) << 16) | (iv.charCodeAt(m++) << 8) | iv.charCodeAt(m++);
 	    m=0;
 	  }
 
 	  //loop through each 64 bit chunk of the message
 	  while (m < len) {
-	    left = (message.byteCodeAt(m++) << 24) | (message.byteCodeAt(m++) << 16) | (message.byteCodeAt(m++) << 8) | message.byteCodeAt(m++);
-	    right = (message.byteCodeAt(m++) << 24) | (message.byteCodeAt(m++) << 16) | (message.byteCodeAt(m++) << 8) | message.byteCodeAt(m++);
+		if (isArrayMessage) {
+			left = (message[m++] << 24) | (message[m++] << 16) | (message[m++] << 8) | message[m++];
+			right = (message[m++] << 24) | (message[m++] << 16) | (message[m++] << 8) | message[m++];
+		} else {
+			left = (message.charCodeAt(m++) << 24) | (message.charCodeAt(m++) << 16) | (message.charCodeAt(m++) << 8) | message.charCodeAt(m++);
+			right = (message.charCodeAt(m++) << 24) | (message.charCodeAt(m++) << 16) | (message.charCodeAt(m++) << 8) | message.charCodeAt(m++);
+		}
 
 	    //for Cipher Block Chaining mode, xor the message with the previous result
 	    if (mode == 1) {if (encrypt) {left ^= cbcleft; right ^= cbcright;} else {cbcleft2 = cbcleft; cbcright2 = cbcright; cbcleft = left; cbcright = right;}}
@@ -157,12 +148,10 @@ function des (key, message, encrypt, mode, iv, padding) {
 	  return result + tempresult;
 	} //end of des
 
-
-
 	//des_createKeys
 	//this takes as input a 64 bit key (even though only 56 bits are used)
 	//as an array of 2 integers, and returns 16 48 bit keys
-	function des_createKeys (key) {
+	function des_createKeys (key, isArray) {
 	  //declaring this locally speeds things up a bit
 	  pc2bytes0  = new Array (0,0x4,0x20000000,0x20000004,0x10000,0x10004,0x20010000,0x20010004,0x200,0x204,0x20000200,0x20000204,0x10200,0x10204,0x20010200,0x20010204);
 	  pc2bytes1  = new Array (0,0x1,0x100000,0x100001,0x4000000,0x4000001,0x4100000,0x4100001,0x100,0x101,0x100100,0x100101,0x4000100,0x4000101,0x4100100,0x4100101);
@@ -189,8 +178,13 @@ function des (key, message, encrypt, mode, iv, padding) {
 	  var lefttemp, righttemp, m=0, n=0, temp;
 
 	  for (var j=0; j<iterations; j++) { //either 1 or 3 iterations
-	    left = (key.byteCodeAt(m++) << 24) | (key.byteCodeAt(m++) << 16) | (key.byteCodeAt(m++) << 8) | key.byteCodeAt(m++);
-	    right = (key.byteCodeAt(m++) << 24) | (key.byteCodeAt(m++) << 16) | (key.byteCodeAt(m++) << 8) | key.byteCodeAt(m++);
+		if (isArray) {
+			left = (key[m++] << 24) | (key[m++] << 16) | (key[m++] << 8) | key[m++];
+			right = (key[m++] << 24) | (key[m++] << 16) | (key[m++] << 8) | key[m++];
+		} else {
+			left = (key.charCodeAt(m++) << 24) | (key.charCodeAt(m++) << 16) | (key.charCodeAt(m++) << 8) | key.charCodeAt(m++);
+			right = (key.charCodeAt(m++) << 24) | (key.charCodeAt(m++) << 16) | (key.charCodeAt(m++) << 8) | key.charCodeAt(m++);
+		}
 
 	    temp = ((left >>> 4) ^ right) & 0x0f0f0f0f; right ^= temp; left ^= (temp << 4);
 	    temp = ((right >>> -16) ^ left) & 0x0000ffff; left ^= temp; right ^= (temp << -16);
