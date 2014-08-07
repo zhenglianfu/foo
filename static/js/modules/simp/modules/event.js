@@ -22,8 +22,32 @@
 			}
 			return false;
 		}
+		function eventTargetFilter(node, str, root){
+			root = root || doc;
+			// judge the target is match the selector
+			// TODO
+			if (str === "*") {
+				return true;
+			}
+			return false;
+		}
+		function getEventOnFun(p, selector, fn){
+			return function(e){
+				var event;
+				if (contain(p, e.target) && eventTargetFilter(e.target, selector, p)) {
+					event = Event(e);
+					// stop the event chain when false
+					if (fn && false === fn.apply(e.target, event)) {
+						event.stopPropagation();
+					}
+				}
+			};
+		}
 		Event = function(e){
-			this.e = e;
+			if (!(this instanceof Event)) {
+				return new Event(e);
+			}
+			simp.extend(this, e);
 		};
 		Event.prototype = {
 				stopPropagation : function(){},
@@ -31,7 +55,9 @@
 		};
 		simp.event = {
 				addEvent : function(ele, type, fn){
-					
+					if (ele.addEventListener) {
+						ele.addEventListener(type, fn);
+					}
 				},
 				on : function(node, type, selector, fn){
 					var i, len;
@@ -42,18 +68,13 @@
 					if (typeof node.length === "number") {
 						i = 0, len = node.length;
 						for (; i < len; i++) {
-							addEvent(node[i], type,( function(){
-								var p = node[i];
-								return function(e){
-									if (contain(p, e.target)) {
-										fn.apply(e.target, e);
-									}
-								};
-							}(i)));
+							simp.event.addEvent(node[i], type, getEventOnFun(node[i],selector, fn));
 						}
+					} else if (node.nodeType == 1) {
+						addEvent(node, type, getEventOnFun(node,selector, fn));
 					}
 				},
 		};
 		window.simp = simp;
 	});
-}(window))
+}(window));
