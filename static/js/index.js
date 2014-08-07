@@ -4,7 +4,14 @@ simp.ready(function(){
 			event = data.event;
 		var container = dom(".container");
 		event.on(container,  "click",  "[data-href]",  function(){
-			window.location.href = $(this).attr("data-href");
+			alert(simp.dom(this).attr("data-href"));
+//			window.location.href = simp.dom(this).attr("data-href");
 		});
+		// for go on
+		for (var i = 0, len = container.length; i < len; i++){
+			event.addEvent(container[i], "click", function(e){
+				console.log(this, e);
+			});
+		}
 	});
 });

@@ -26,20 +26,20 @@
 			root = root || doc;
 			// judge the target is match the selector
 			// TODO
-			if (str === "*") {
-				return true;
+			if (node) {
+				if (str === "*") {
+					return true;
+				}
+				while (contain(root, node)) {
+					node = node.parentNode;
+				} 
 			}
 			return false;
 		}
 		function getEventOnFun(p, selector, fn){
 			return function(e){
-				var event;
-				if (contain(p, e.target) && eventTargetFilter(e.target, selector, p)) {
-					event = Event(e);
-					// stop the event chain when false
-					if (fn && false === fn.apply(e.target, event)) {
-						event.stopPropagation();
-					}
+				if (eventTargetFilter(e.target, selector, p)) {
+					return fn && fn.call(e.target, e);
 				}
 			};
 		}
@@ -56,7 +56,13 @@
 		simp.event = {
 				addEvent : function(ele, type, fn){
 					if (ele.addEventListener) {
-						ele.addEventListener(type, fn);
+						ele.addEventListener(type, function(e){
+							// stop the event chain when false
+							var event = Event(e);
+							if (fn && false === fn.call(ele, event)) {
+								event.stopPropagation();
+							}
+						});
 					}
 				},
 				on : function(node, type, selector, fn){
