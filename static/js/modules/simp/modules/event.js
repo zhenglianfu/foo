@@ -14,7 +14,13 @@
 		// 模式借鉴，包装器，借用，
 		// 尽量不去污染 各个模块的构造函数，移除模块后保持行为正常，即分离设计
 		function contain(a, b){
-			return true;
+			while (b) {
+				// not null
+				if (( b = b.parentNode) && b === a){
+					return true;
+				}
+			}
+			return false;
 		}
 		Event = function(e){
 			this.e = e;
