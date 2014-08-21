@@ -5,7 +5,8 @@
 (function(window){
 	var simp = window.simp || {},
 		doc = window.document,
-		dom, Event, div;
+		dom, Event, div,
+		rquickExpr = /^(?:#([\w-]+)|(\w+)|\.([\w-]+))$/;
 	simp.require("dom", function(data, errors){
 		dom = data.dom;
 		div = dom("<div>");
@@ -22,6 +23,22 @@
 			}
 			return false;
 		}
+		function matcher(node, str) {
+			str = "" + str;
+			var matches;
+			if ((matches = str.match(rquickExpr))) {
+				if (matches[1]) { // id
+					
+				} else if (matches[2]) { // tag
+					
+				} else if (matches[3]) { // class
+					
+				}
+			} else {
+				
+			}
+			return true;
+		}
 		function eventTargetFilter(node, str, root){
 			root = root || doc;
 			// judge the target is match the selector
@@ -31,6 +48,9 @@
 					return true;
 				}
 				while (contain(root, node)) {
+					if (matcher(node, str)) {
+						return true;
+					}
 					node = node.parentNode;
 				} 
 			}

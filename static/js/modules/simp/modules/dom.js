@@ -115,7 +115,7 @@
 		};
 		// for other select
 		var select = function(str, context, result){
-			
+			// TODO
 			return result;
 		};
 		// a contain b ?
@@ -133,90 +133,95 @@
 				} 
 			}
 			return false;
-		}
-		return function(str, context, result){
-			var nodeType, elem, m;
-			context = context || doc;
-			result = result || []; 
-			if (!str || typeof str !== "string") {
-				return result;
-			}
-			if ( (nodeType = context.nodeType) !== 1 && nodeType !== 9 ) {
-				return [];
-			}
-			// quick match id, tag, class
-			if ((match = rquickExpr.exec(str))) {
-				// ID
-				if ((m = match[1])) {
-					// context is document
-					if (nodeType === 9) {
-						elem = context.getElementById( m );
-						// ie will get the name matched the id
-						if (elem.id == m) {
-							result.push(elem);
-							return result;
-						} else {
-							return result;
-						}
-					} else {
-						// context is not document
-						if (context.ownerDocument && (elem = context.ownerDocument.getElemetById(m)) && elem.id == m && contain(context, elem)) {
-							result.push(elem);
-							return result;
-						} else {
-							return result;
-						}
-					}
-				}
-				// tag
-				else if ((m = match[2])) {
-					push.apply(result, slice.call(context.getElementsByTagName(m) , 0));
+		};
+		return {
+			select : function(str, context, result){
+				var nodeType, elem, m;
+				context = context || doc;
+				result = result || []; 
+				if (!str || typeof str !== "string") {
 					return result;
 				}
-				// class
-				else if ((m = match[2])) {
-					push.apply(result, slice.call(getElementsByClassName(m, context) , 0));
-					return result;
+				if ( (nodeType = context.nodeType) !== 1 && nodeType !== 9 ) {
+					return [];
 				}
-			}
-			// not match quick expr
-			if (context.querySelectorAll) {
-				var old = true,
-					group = str.split(","),
-					i = 0,
-					nid = "foo-" + new Date().getTime(),
-					newContext = context,
-					newSelector = nodeType === 9 && str; // must be root
-				// IE 8 doesn't work on object elements
-				// add id to the elem to work around
-				if (nodeType === 1 && newContext.nodeName.toLowerCase() !== 'object') {
-					if ((old = newContext.getAttribute("id"))) {
-						nid = old.replace("", "");
-					} else {
-						context.setAttribute("id", nid);
+				// quick match id, tag, class
+				if ((match = rquickExpr.exec(str))) {
+					// ID
+					if ((m = match[1])) {
+						// context is document
+						if (nodeType === 9) {
+							elem = context.getElementById( m );
+							// ie will get the name matched the id
+							if (elem.id == m) {
+								result.push(elem);
+								return result;
+							} else {
+								return result;
+							}
+						} else {
+							// context is not document
+							if (context.ownerDocument && (elem = context.ownerDocument.getElemetById(m)) && elem.id == m && contain(context, elem)) {
+								result.push(elem);
+								return result;
+							} else {
+								return result;
+							}
+						}
 					}
-					nid = "[id='" + nid + "']";
-					newContext = rsibling.test(str) && context.parentNode || context;
-					while(group[i++]) {					
-						group[i] = nid + " " + group[i];
-					}
-					newSelector = group.join(",");
-				} 
-				if (newSelector) {
-					try{
-						push.apply(result, slice.call(newContext.querySelectorAll(newSelector), 0));
+					// tag
+					else if ((m = match[2])) {
+						push.apply(result, slice.call(context.getElementsByTagName(m) , 0));
 						return result;
-					} catch(e){
-						// log
-					}finally{
-						if (!old) {
-							context.removeAttribute("id");
+					}
+					// class
+					else if ((m = match[2])) {
+						push.apply(result, slice.call(getElementsByClassName(m, context) , 0));
+						return result;
+					}
+				}
+				// not match quick expr
+				if (context.querySelectorAll) {
+					var old = true,
+						group = str.split(","),
+						i = 0,
+						nid = "foo-" + new Date().getTime(),
+						newContext = context,
+						newSelector = nodeType === 9 && str; // must be root
+					// IE 8 doesn't work on object elements
+					// add id to the elem to work around
+					if (nodeType === 1 && newContext.nodeName.toLowerCase() !== 'object') {
+						if ((old = newContext.getAttribute("id"))) {
+							nid = old.replace("", "");
+						} else {
+							context.setAttribute("id", nid);
+						}
+						nid = "[id='" + nid + "']";
+						newContext = rsibling.test(str) && context.parentNode || context;
+						while(group[i++]) {					
+							group[i] = nid + " " + group[i];
+						}
+						newSelector = group.join(",");
+					} 
+					if (newSelector) {
+						try{
+							push.apply(result, slice.call(newContext.querySelectorAll(newSelector), 0));
+							return result;
+						} catch(e){
+							// log
+						}finally{
+							if (!old) {
+								context.removeAttribute("id");
+							}
 						}
 					}
 				}
+				// all other select
+				return select(str, context, result);
+			},
+			match : function(){
+				
 			}
-			// all other select
-			return select(str, context, result);
 		};
 	}(),
 	isRoot = function(node){
@@ -418,7 +423,10 @@
 			hide : function(){
 				return this;
 			},
-			is : function(){
+			is : function(s){
+				if (typeof s === "string") {
+					
+				}
 				return false;
 			},
 			html : function(html){
@@ -474,7 +482,7 @@
 			find : function(selector){
 				var i = 0, len = this.length, result = [];
 				for (; i<len; i++) {
-					Selector(selector, this[i], result);
+					Selector.select(selector, this[i], result);
 				}
 				return Node(result);
 			}
@@ -516,15 +524,15 @@
 			} else { // query 
 				// hasContext
 				// isString, isNodeList, isMyNodeType, isNull, isHTMLElement
-				context = (typeof context === "string" ? Selector(context) : context) || doc;
+				context = (typeof context === "string" ? Selector.select(context) : context) || doc;
 				if (typeof context.length === "number") {
 					var nodes = [];
 					for (i = 0, len = context.length; i < len; i++) {
-						Selector(s, context[i], nodes);
+						Selector.select(s, context[i], nodes);
 					}
 					return Node(nodes);
 				}
-				return Node(Selector(s, context))
+				return Node(Selector.select(s, context))
 			}
 		} else if (s.nodeType === 1) {
 			return Node([s]);
