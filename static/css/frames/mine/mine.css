@@ -2103,8 +2103,8 @@ a [class^=icon-], a [class*=' icon-']{
 	-webkit-animation-timing-function : ease-out;
 }
 .animation-infinite{
-	animation-iteration-count ：infinite;
-	-webkit-animation-iteration-count ：infinite;
+	animation-iteration-count: infinite;
+	-webkit-animation-iteration-count: infinite;
 }
 .animation-duration2x{
 	animation-duration : 2s;
