@@ -126,7 +126,7 @@
     	},
     	foo : function(){},
     	ready : function(fn){
-    		if (doc.readyState === 'complete') {
+    		if (doc.readyState === 'complete' || doc.readyState === 'loaded') {
     			fn && fn();
     		} else {
     			setTimeout(function(){
@@ -193,10 +193,10 @@
 			var time = timeout === undefined ? -1 : timeout; 
 			if (cond === true || (simply.isFunction(cond) && cond())) {
 				fn && fn();
-			} else if (time < 0 || !((time - 50) < 0)) {
+			} else if (time < 0 || (time - 50) >= 0) {
 				setTimeout(function(){
 					simply.defer(cond, fn, time - 50);
-				}, 50)
+				}, 50);
 			}
 		},
 		trim : function(s){
